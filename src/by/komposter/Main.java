@@ -13,7 +13,7 @@ public class Main {
             sfr.read();
 //System.out.print(sfr.toString());
             dbc.dbCreate("wow");
-            dbc.setDBName("EasyInv");
+            dbc.setDBName("EasyBreezzy");
 //dbc.connect();
             dbc.loadScheme(sfr);
 //конец1*/

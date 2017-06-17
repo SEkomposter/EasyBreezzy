@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class IOClass {
     Map<String,String> params = new LinkedHashMap<String,String>();
-    String filePath = "h:\\easyinv\\";
+    String filePath = "d:\\EasyBreezzy\\";
     IOClass(){
 
     }
