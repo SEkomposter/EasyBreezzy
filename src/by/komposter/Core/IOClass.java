@@ -1,6 +1,6 @@
 package by.komposter.Core;
 
-import by.komposter.Logger.Logger;
+import by.komposter.Notificator.Notificator;
 
 import java.io.*;
 import java.nio.file.FileSystemException;
@@ -39,17 +39,17 @@ public class IOClass {
                     writeToIni(map);
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                Notificator.pushToScreenNlog(ex);
 
             } finally {
                 output.close();
             }
         }
         catch (FileNotFoundException ex){
-            Logger.writeToLog("Ini not found. Recreated");
+            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
         }
         catch (IOException ex){
-            ex.printStackTrace();
+            Notificator.pushToScreenNlog(ex);
         }
 
     }
@@ -78,11 +78,8 @@ public class IOClass {
             }
         }
         catch (Exception ex){
-            Logger.writeToLog("Ini not found. Recreated");
+            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
         }
-
-
-
         return params;
     }
 }

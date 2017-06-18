@@ -1,7 +1,7 @@
 package by.komposter.DB;
 
 import by.komposter.Core.AppSettings;
-
+import by.komposter.Notificator.Notificator;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ public class DBConnector {
     String dbName = "";
     static Properties properties;
     AppSettings appS;
+    SQLFileReader sqlQuery = new SQLFileReader();
 
     public DBConnector() {
         appS = new AppSettings();
@@ -38,28 +39,31 @@ public class DBConnector {
         connection = DriverManager.getConnection(url,properties);
         return connection;
     }
+    public Connection connect(String db) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
+        this.dbName = db;
+        return connect();
+    }
 
     public void setDBName(String dbn) {
         appS.setParam("dbname", dbn);
     }
-    public String getDBName(){return dbName;}
+    public String getDBName(){return appS.getParamVal("dbName");}
 
     public void dbCreate(String newdb) {
         PreparedStatement stm = null;
         try {
             String query = "CREATE DATABASE " + newdb;
             setDBName(newdb);
-            new SQLFileReader().changeSQLscript(newdb);
             stm = connect().prepareStatement(query);
             stm.executeUpdate();
+            loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
             stm.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            Notificator.pushToScreenNlog(e);
         }
     }
-    public void loadScheme(SQLFileReader sqlfr) throws IOException,SQLException{
-        ArrayList tmp = sqlfr.read();
-        Iterator it = tmp.iterator();
+    public void loadScheme(ArrayList<String> qList) throws IOException,SQLException{
+        Iterator it = qList.iterator();
         Statement stm = connection.createStatement();
 
         try {
@@ -68,7 +72,7 @@ public class DBConnector {
             }
             stm.executeBatch();
         }catch(SQLException ex){
-            ex.printStackTrace();
+            Notificator.pushToScreenNlog(ex);
         }
         finally {
             stm.close();

@@ -1,14 +1,12 @@
 package by.komposter.DB;
 
 import by.komposter.Core.AppSettings;
+import by.komposter.Notificator.Notificator;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static by.komposter.Logger.Logger.*;
-
 
 public class SQLFileReader {
     private String filePath;
@@ -30,41 +28,38 @@ public class SQLFileReader {
                 if (!sql2.exists()) throw new FileNotFoundException();
             }
         } catch (FileNotFoundException ex) {
-            writeToLog(ex.getMessage());
+            Notificator.pushToScreenNlog(ex);
         }
     }
 
-    public ArrayList<String> read() throws IOException{
+    public ArrayList<String> read() throws IOException {
         Pattern p1 = Pattern.compile("\\s+\\S+$");
         Pattern p2 = Pattern.compile("^(-+.+$)");
-        Matcher m1,m2;
+        Matcher m1, m2;
         input = new BufferedReader(new FileReader(filePath + "" + fileName));
-            while ((s1=input.readLine())!=null){
-                m1 = p1.matcher(s1);
-                m2 = p2.matcher(s1);
-                if (m1.find()&&!m2.find()) cmds.add(s1);
-            }
-            input.close();
+        while ((s1 = input.readLine()) != null) {
+            m1 = p1.matcher(s1);
+            m2 = p2.matcher(s1);
+            if (m1.find() && !m2.find()) cmds.add(s1);
+        }
+        input.close();
         return cmds;
     }
 
-    public ArrayList<String> changeSQLscript(String newDB) {
-        ArrayList<String> tempL = new ArrayList<>();
+    public ArrayList<String> changeSQLscript(ArrayList<String> queries, String newDB) {
+        ArrayList<String> tempIn = new ArrayList<>();
+        ArrayList<String> tempOut = new ArrayList<>();
         try {
-            tempL.addAll(read());
-            //boolean next=false;
-            Iterator<String> it = tempL.iterator();
-            while (it.hasNext()) it.next().replaceAll("EasyInv", newDB);
-            //appS.getParamVal("dbname")
-            appS.setParam("dbname", newDB);
-            write(tempL);
-
+            tempIn.addAll(queries);
+            Iterator<String> it = tempIn.iterator();
+            while (it.hasNext()) tempOut.add(it.next().replaceAll("EasyInv", newDB));
         } catch (Exception ex) {
-            writeToLog(ex.getMessage());
+            Notificator.pushToScreenNlog(ex);
         }
-        return tempL;
+        return tempOut;
     }
-
+}
+/*
     public void write(ArrayList<String> lines) {
         try {
             BufferedWriter output = new BufferedWriter(new FileWriter(filePath + "" + fileName));
@@ -92,5 +87,4 @@ public class SQLFileReader {
             sb.append(it.next());}
         return sb.toString();
     }
-
-}
+*/
