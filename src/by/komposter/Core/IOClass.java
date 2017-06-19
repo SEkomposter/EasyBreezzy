@@ -38,18 +38,18 @@ public class IOClass {
                     ini.createNewFile();
                     writeToIni(map);
                 }
-            } catch (Exception ex) {
-                Notificator.pushToScreenNlog(ex);
+            } catch (Exception e) {
+                Notificator.pushToScreenNlog(e, this.getClass());
 
             } finally {
                 output.close();
             }
         }
-        catch (FileNotFoundException ex){
-            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
+        catch (FileNotFoundException e){
+            Notificator.pushToScreenNlog(e, this.getClass(),"Ini not found. Recreated");
         }
-        catch (IOException ex){
-            Notificator.pushToScreenNlog(ex);
+        catch (IOException e){
+            Notificator.pushToScreenNlog(e,this.getClass());
         }
 
     }
@@ -77,8 +77,8 @@ public class IOClass {
                 input.close();
             }
         }
-        catch (Exception ex){
-            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
+        catch (Exception e){
+            Notificator.pushToScreenNlog(e,this.getClass(),"Ini not found. Recreated");
         }
         return params;
     }

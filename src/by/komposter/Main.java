@@ -1,6 +1,7 @@
 package by.komposter;
 
 import by.komposter.DB.DBConnector;
+import by.komposter.Notificator.Notificator;
 
 public class Main {
 
@@ -8,7 +9,7 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            dbc.dbCreate("db2");
+            dbc.dbCreate("db3");
 
 //dbc.connect();
 
@@ -20,7 +21,7 @@ public class Main {
             //appSettings.setParam("dbname", "EasyInv2");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Notificator.pushToScreenNlog(e,Main.class);
         }
     }
 }
