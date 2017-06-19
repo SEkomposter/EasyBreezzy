@@ -1,6 +1,7 @@
 package by.komposter;
 
 import by.komposter.DB.DBConnector;
+import by.komposter.Notificator.Notificator;
 
 public class Main {
 
@@ -20,7 +21,7 @@ public class Main {
             //appSettings.setParam("dbname", "EasyInv2");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Notificator.pushToScreenNlog(e);
         }
     }
 }

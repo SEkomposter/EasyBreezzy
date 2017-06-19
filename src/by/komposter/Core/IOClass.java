@@ -39,17 +39,17 @@ public class IOClass {
                     writeToIni(map);
                 }
             } catch (Exception ex) {
-                Notificator.pushToScreenNlog(ex);
+                Notificator.pushToScreenNlog(ex, this.getClass());
 
             } finally {
                 output.close();
             }
         }
         catch (FileNotFoundException ex){
-            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
+            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated", this.getClass());
         }
         catch (IOException ex){
-            Notificator.pushToScreenNlog(ex);
+            Notificator.pushToScreenNlog(ex, this.getClass());
         }
 
     }
@@ -72,13 +72,13 @@ public class IOClass {
                 }
                 input.close();
             } catch (Exception ex) {
-                ex.printStackTrace();
+                Notificator.pushToScreenNlog(ex, this.getClass());
             } finally {
                 input.close();
             }
         }
         catch (Exception ex){
-            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated");
+            Notificator.pushToScreenNlog(ex,"Ini not found. Recreated", this.getClass());
         }
         return params;
     }

@@ -59,7 +59,7 @@ public class DBConnector {
             loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
             stm.close();
         } catch (Exception e) {
-            Notificator.pushToScreenNlog(e);
+            Notificator.pushToScreenNlog(e, this.getClass());
         }
     }
     public void loadScheme(ArrayList<String> qList) throws IOException,SQLException{
@@ -72,7 +72,7 @@ public class DBConnector {
             }
             stm.executeBatch();
         }catch(SQLException ex){
-            Notificator.pushToScreenNlog(ex);
+            Notificator.pushToScreenNlog(ex, this.getClass());
         }
         finally {
             stm.close();
