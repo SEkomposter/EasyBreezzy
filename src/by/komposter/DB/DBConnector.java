@@ -51,6 +51,7 @@ public class DBConnector {
 
     public void dbCreate(String newdb) {
         PreparedStatement stm = null;
+        Notificator.pushToScreenNlog("Creating empty DB: \"" + newdb + "\"...", this.getClass() );
         try {
             String query = "CREATE DATABASE " + newdb;
             setDBName(newdb);
@@ -58,11 +59,14 @@ public class DBConnector {
             stm.executeUpdate();
             loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
             stm.close();
+            Notificator.pushToScreenNlog("DB: \"" + newdb + "\" created", this.getClass() );
+
         } catch (Exception e) {
             Notificator.pushToScreenNlog(e, this.getClass());
         }
     }
     public void loadScheme(ArrayList<String> qList) throws IOException,SQLException{
+        Notificator.pushToScreenNlog("Loading scheme for DB...", this.getClass());
         Iterator it = qList.iterator();
         Statement stm = connection.createStatement();
 
@@ -71,6 +75,7 @@ public class DBConnector {
                 stm.addBatch((String) it.next());
             }
             stm.executeBatch();
+            Notificator.pushToScreenNlog("Loading scheme completed successfully", this.getClass());
         }catch(SQLException e){
             Notificator.pushToScreenNlog(e, this.getClass());
         }

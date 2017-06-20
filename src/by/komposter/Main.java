@@ -9,16 +9,8 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            dbc.dbCreate("db3");
+            dbc.dbCreate("db4");
 
-//dbc.connect();
-
-//конец1*/
-            // AppSettings appSettings = new AppSettings();
-            //System.out.println(appSettings.getParamVal("dbname"));
-            //appSettings.setParam("dbname", "EasyInv2");
-            //System.out.println(appSettings.getParamVal("dbname"));
-            //appSettings.setParam("dbname", "EasyInv2");
 
         } catch (Exception e) {
             Notificator.pushToScreenNlog(e,Main.class);
