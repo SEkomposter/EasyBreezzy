@@ -71,8 +71,8 @@ public class DBConnector {
                 stm.addBatch((String) it.next());
             }
             stm.executeBatch();
-        }catch(SQLException ex){
-            Notificator.pushToScreenNlog(ex, this.getClass());
+        }catch(SQLException e){
+            Notificator.pushToScreenNlog(e, this.getClass());
         }
         finally {
             stm.close();

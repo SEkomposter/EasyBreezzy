@@ -9,7 +9,7 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            dbc.dbCreate("db2");
+            dbc.dbCreate("db3");
 
 //dbc.connect();
 
@@ -21,7 +21,7 @@ public class Main {
             //appSettings.setParam("dbname", "EasyInv2");
 
         } catch (Exception e) {
-            Notificator.pushToScreenNlog(e);
+            Notificator.pushToScreenNlog(e,Main.class);
         }
     }
 }

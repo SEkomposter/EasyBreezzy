@@ -27,8 +27,8 @@ public class SQLFileReader {
                 File sql2 = new File(this.filePath + "\\" + this.fileName);
                 if (!sql2.exists()) throw new FileNotFoundException();
             }
-        } catch (FileNotFoundException ex) {
-            Notificator.pushToScreenNlog(ex, this.getClass());
+        } catch (FileNotFoundException e) {
+            Notificator.pushToScreenNlog(e, this.getClass());
         }
     }
 
@@ -53,8 +53,8 @@ public class SQLFileReader {
             tempIn.addAll(queries);
             Iterator<String> it = tempIn.iterator();
             while (it.hasNext()) tempOut.add(it.next().replaceAll("EasyInv", newDB));
-        } catch (Exception ex) {
-            Notificator.pushToScreenNlog(ex, this.getClass());
+        } catch (Exception e) {
+            Notificator.pushToScreenNlog(e, this.getClass());
         }
         return tempOut;
     }
