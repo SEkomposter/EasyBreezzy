@@ -28,8 +28,12 @@ public class DBConnector {
         this.adminPass = appS.getParamVal("password");
         this.url = "jdbc:mysql://" + serverName + ":3306/" + dbName;
     }
+    public String toString(){
+        return this.getClass().getSimpleName() + ". \""+ url + "\", driver: \"" + driver + "\"";
+    }
 
     public Connection connect() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        Notificator.pushToScreenNlog("Preparing connection..." + toString(),this.getClass());
         properties = new Properties();
         properties.setProperty("user", dbAdminName);
         properties.setProperty("password", adminPass);
@@ -37,11 +41,20 @@ public class DBConnector {
         properties.setProperty("autoReconnect", "true");
         Driver dr = (Driver) Class.forName(driver).newInstance();
         connection = DriverManager.getConnection(url,properties);
-        return connection;
+        Notificator.pushToScreenNlog("Connection established. " + toString(),this.getClass());
+        return  connection;
     }
     public Connection connect(String db) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
         this.dbName = db;
+        this.url = "jdbc:mysql://" + serverName + ":3306/" + dbName;
+        setDBName(db);
         return connect();
+    }
+    public void disconnect() throws SQLException{
+        if(!(connection==null)) {
+            connection.close();
+            Notificator.pushToScreenNlog("Connection closed. " + toString(),this.getClass());
+        }
     }
 
     public void setDBName(String dbn) {
