@@ -12,7 +12,7 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            //dbc.dbCreate("db4");
+            dbc.dbCreate("db4");
             dbc.connect("db4");
             //System.out.println("pause");
 
