@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `EasyInv`.`gpu` ( `idgpu` INT NOT NULL, `idmodel` INT
 -- -----------------------------------------------------
 -- Table `EasyInv`.`soft`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `EasyInv`.`soft` ( `idhostsoft` INT NOT NULL AUTO_INCREMENT, `softname` VARCHAR(45) NOT NULL, `version` VARCHAR(45) NOT NULL, `revision` VARCHAR(45) NULL, `lictype` VARCHAR(45) NOT NULL, `licdateinst` DATE NULL, `licterm` DATE NULL, `idadmin` INT NULL, PRIMARY KEY (`idhostsoft`), UNIQUE INDEX `idhostsoft_UNIQUE` (`idhostsoft` ASC)) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `EasyInv`.`soft` ( `idhostsoft` INT NOT NULL AUTO_INCREMENT, `softname` VARCHAR(45) NOT NULL, `version` VARCHAR(45) NOT NULL, `revision` VARCHAR(45) NULL, `lictype` VARCHAR(45) NOT NULL, `licdateinst` VARCHAR(10) NULL, `licterm` VARCHAR(10) NULL, `idadmin` INT NULL, PRIMARY KEY (`idhostsoft`), UNIQUE INDEX `idhostsoft_UNIQUE` (`idhostsoft` ASC)) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `EasyInv`.`reasons` ( `idreason` INT NOT NULL AUTO_IN
 -- -----------------------------------------------------
 -- Table `EasyInv`.`transaction`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `EasyInv`.`transaction` ( `idtransaction` INT NOT NULL AUTO_INCREMENT, `regnum` INT NOT NULL, `idnodefrom` INT NOT NULL, `idnodeto` INT NOT NULL, `idadmin` INT NOT NULL, `transactiondate` DATE NOT NULL, `idreason` INT NOT NULL, PRIMARY KEY (`idtransaction`), UNIQUE INDEX `idtransaction_UNIQUE` (`idtransaction` ASC), INDEX `idadmin_idx` (`idadmin` ASC), INDEX `idreason_idx` (`idreason` ASC), INDEX `regnum_idx` (`regnum` ASC), CONSTRAINT `idadmin` FOREIGN KEY (`idadmin`) REFERENCES `EasyInv`.`nodeuser` (`idnodeuser`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `idreason` FOREIGN KEY (`idreason`) REFERENCES `EasyInv`.`reasons` (`idreason`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `trans_regnum` FOREIGN KEY (`regnum`) REFERENCES `EasyInv`.`devices` (`regnum`) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `EasyInv`.`transaction` ( `idtransaction` INT NOT NULL AUTO_INCREMENT, `regnum` INT NOT NULL, `idnodefrom` INT NOT NULL, `idnodeto` INT NOT NULL, `idadmin` INT NOT NULL, `transactiondate` VARCHAR(10) NOT NULL, `idreason` INT NOT NULL, PRIMARY KEY (`idtransaction`), UNIQUE INDEX `idtransaction_UNIQUE` (`idtransaction` ASC), INDEX `idadmin_idx` (`idadmin` ASC), INDEX `idreason_idx` (`idreason` ASC), INDEX `regnum_idx` (`regnum` ASC), CONSTRAINT `idadmin` FOREIGN KEY (`idadmin`) REFERENCES `EasyInv`.`nodeuser` (`idnodeuser`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `idreason` FOREIGN KEY (`idreason`) REFERENCES `EasyInv`.`reasons` (`idreason`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `trans_regnum` FOREIGN KEY (`regnum`) REFERENCES `EasyInv`.`devices` (`regnum`) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE = InnoDB;
 
 START TRANSACTION;
 USE `EasyInv` ;
