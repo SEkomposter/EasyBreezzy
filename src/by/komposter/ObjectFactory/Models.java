@@ -1,8 +1,20 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "models")
+
 public class Models {
+    @Id
+            @Column(name = "idmodel")
     int idModel;
-    String model, vendor;
+    @Column(name="model",unique = true, nullable = false, length = 45)
+    String model;
+    @Column(name="vendor",unique = true, nullable = false, length = 45)
+    String vendor;
+    @JoinTable(name = "CATALOG", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
+    private Student student;
 
     public int getIdModel() {
         return idModel;
