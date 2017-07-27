@@ -1,20 +1,29 @@
 package by.komposter.ObjectFactory;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table (name = "models")
 
-public class Models {
+public class Models implements Serializable{
+    public Models(){}
     @Id
-            @Column(name = "idmodel")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idmodel")
     int idModel;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Host.Cpu cpu;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Host.Hdd hdd;
     @Column(name="model",unique = true, nullable = false, length = 45)
     String model;
     @Column(name="vendor",unique = true, nullable = false, length = 45)
     String vendor;
-    @JoinTable(name = "CATALOG", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
-    private Student student;
+   //@JoinTable(name = "CATALOG", joinColumns = @JoinColumn(name = "ID_BOOK"), inverseJoinColumns = @JoinColumn(name = "ID_STUDENT"))
+
 
     public int getIdModel() {
         return idModel;

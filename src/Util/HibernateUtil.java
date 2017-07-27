@@ -2,13 +2,21 @@ package Util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
+    static {
+        Configuration cfg = new Configuration().configure();
 
-    static SessionFactory getSessionFactory() {
-        return new Configuration().configure().buildSessionFactory();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
+
+        sessionFactory = cfg.buildSessionFactory(builder.build());
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
 }
