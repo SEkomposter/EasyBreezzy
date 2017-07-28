@@ -1,8 +1,28 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "devices")
 public class Devices {
-    int regnum, idDeviceType, idNode;
-    String invNum, state, description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "regnum")
+    int regnum;
+    @Column(name = "invnum")
+    String invNum;
+    @Column(name = "devicetype")
+    String deviceType;
+    @Column(name = "idnode")
+    int idNode;
+    @Column(name = "state")
+    String state;
+    @Column(name = "description")
+    String description;
+    @Column(name = "model")
+    String model;
+    @Column(name = "vendor")
+    String vendor;
 
     public int getRegnum() {
         return regnum;
@@ -12,12 +32,12 @@ public class Devices {
         this.regnum = regnum;
     }
 
-    public int getIdDeviceType() {
-        return idDeviceType;
+    public String  getDeviceType() {
+        return deviceType;
     }
 
-    public void setIdDeviceType(int idDeviceType) {
-        this.idDeviceType = idDeviceType;
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
     }
 
     public int getIdNode() {
@@ -50,5 +70,21 @@ public class Devices {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
     }
 }

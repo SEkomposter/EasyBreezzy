@@ -12,12 +12,11 @@ public class Models implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idmodel")
     int idModel;
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Host.Cpu cpu;
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Host.Hdd hdd;
+    @OneToOne (mappedBy = "models")
+    Cpu cpu;
+    @OneToOne (mappedBy = "models")
+    Hdd hdd;
+
     @Column(name="model",unique = true, nullable = false, length = 45)
     String model;
     @Column(name="vendor",unique = true, nullable = false, length = 45)

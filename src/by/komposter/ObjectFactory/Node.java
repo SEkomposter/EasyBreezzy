@@ -1,8 +1,26 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "node")
 public class Node {
-    int idNode,idNodeUser,idHost,idSbe,idDepartment;
-    String nodeName, location;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idnode")
+    int idNode;
+    @Column(name = "nodeName")
+    String nodeName;
+    @Column(name = "idnodeuser")
+    int idNodeUser;
+    @Column(name = "idhost")
+    int idHost;
+    @Column(name = "Sbe")
+    String Sbe;
+    @Column(name = "department")
+    String department;
+    @Column(name = "location")
+    String location;
 
     public int getIdNode() {
         return idNode;
@@ -28,20 +46,20 @@ public class Node {
         this.idHost = idHost;
     }
 
-    public int getIdSbe() {
-        return idSbe;
+    public String getIdSbe() {
+        return Sbe;
     }
 
-    public void setIdSbe(int idSbe) {
-        this.idSbe = idSbe;
+    public void setIdSbe(String Sbe) {
+        this.Sbe = Sbe;
     }
 
-    public int getIdDepartment() {
-        return idDepartment;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setIdDepartment(int idDepartment) {
-        this.idDepartment = idDepartment;
+    public void setDepartment(String  department) {
+        this.department = department;
     }
 
     public String getNodeName() {
@@ -60,4 +78,11 @@ public class Node {
         this.location = location;
     }
 
+    public String getSbe() {
+        return Sbe;
+    }
+
+    public void setSbe(String sbe) {
+        Sbe = sbe;
+    }
 }

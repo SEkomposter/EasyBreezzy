@@ -1,10 +1,27 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Entity
+@Table(name = "transaction")
 public class Transaction {
-    int idTransaction, regnum, idNodeFrom, idNodeTo, idAdmin, idReason;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idtransaction")
+    int idTransaction;
+    @Column(name = "regnum")
+    int regnum;
+    @Column(name = "idNodeFrom")
+    int idNodeFrom;
+    @Column(name = "idNodeto")
+    int idNodeTo;
+    @Column(name = "idadmin")
+    int idAdmin;
+    @Column(name = "reason")
+    String reason;
+    @Column(name = "transactionDate")
     String transactionDate;
     Date date;
 
@@ -16,7 +33,7 @@ public class Transaction {
         this.idTransaction = idTransaction;
     }
 
-    public int getRegnum() {
+    public int  getRegnum() {
         return regnum;
     }
 
@@ -48,12 +65,12 @@ public class Transaction {
         this.idAdmin = idAdmin;
     }
 
-    public int getIdReason() {
-        return idReason;
+    public String getReason() {
+        return reason;
     }
 
-    public void setIdReason(int idReason) {
-        this.idReason = idReason;
+    public void setReason(String idReason) {
+        this.reason = reason;
     }
 
     public String getTransactionDate() {

@@ -6,23 +6,23 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db4?useSSL=false</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db5?useSSL=false</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">dba1</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
 
-        <mapping class="by.komposter.ObjectFactory.Models" />
-        <mapping class="by.komposter.ObjectFactory.Cpu" />
         <mapping class="by.komposter.ObjectFactory.NodeUser" />
         <mapping class="by.komposter.ObjectFactory.Node" />
-        <mapping class="by.komposter.ObjectFactory.Departments" />
         <mapping class="by.komposter.ObjectFactory.Devices" />
-        <mapping class="by.komposter.ObjectFactory.DeviceTypes" />
         <mapping class="by.komposter.ObjectFactory.Host" />
-        <mapping class="by.komposter.ObjectFactory.Reason" />
-        <mapping class="by.komposter.ObjectFactory.SBE" />
         <mapping class="by.komposter.ObjectFactory.Transaction" />
+        <mapping class="by.komposter.ObjectFactory.Admins" />
+        <mapping class="by.komposter.ObjectFactory.Cpu" />
+        <mapping class="by.komposter.ObjectFactory.Gpu" />
+        <mapping class="by.komposter.ObjectFactory.Memory" />
+        <mapping class="by.komposter.ObjectFactory.Hdd" />
+        <mapping class="by.komposter.ObjectFactory.Soft" />
 
     </session-factory>
 </hibernate-configuration>

@@ -20,6 +20,7 @@ public class Main {
             HibernateUtil hibernateUtil = new HibernateUtil();
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
 
+            sessionFactory.close();
 
         } catch (Exception e) {
             Notificator.pushToScreenNlog(e,Main.class);

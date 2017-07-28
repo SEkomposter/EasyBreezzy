@@ -12,6 +12,7 @@ public class SQLFileReader {
     private String filePath;
     private String fileName;
     private String result = "";
+    private String[] sqlStrings;
     private AppSettings appS;
     private String s1;
     private ArrayList<String> cmds = new ArrayList<String>();
@@ -36,13 +37,18 @@ public class SQLFileReader {
         Pattern p1 = Pattern.compile("\\s+\\S+$");
         Pattern p2 = Pattern.compile("^(-+.+$)");
         Matcher m1, m2;
+        StringBuilder stringBuilder = new StringBuilder();
         input = new BufferedReader(new FileReader(filePath + "" + fileName));
         while ((s1 = input.readLine()) != null) {
             m1 = p1.matcher(s1);
             m2 = p2.matcher(s1);
-            if (m1.find() && !m2.find()) cmds.add(s1);
+            if (m1.find() && !m2.find()) stringBuilder.append(s1);
         }
         input.close();
+        sqlStrings=(stringBuilder.toString().split(";"));
+        for (String str: sqlStrings) {
+            cmds.add(str);
+        }
         return cmds;
     }
 
