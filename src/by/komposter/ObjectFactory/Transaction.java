@@ -13,6 +13,22 @@ public class Transaction {
     int idTransaction;
     @Column(name = "regnum")
     int regnum;
+
+    //link: "transaction-devices"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "regnum")
+    private Devices device;
+
+    //link: "transaction-node (nodeto)"
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idNodeTo")
+    Host hostTo;
+
+    //link: "transaction-node (nodefrom)"
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idNodeFrom")
+    Host hostFrom;
+
     @Column(name = "idNodeFrom")
     int idNodeFrom;
     @Column(name = "idNodeto")
@@ -84,5 +100,29 @@ public class Transaction {
     }
     public void setTransactionDate(String transactionDate) {
         this.transactionDate = transactionDate;
+    }
+
+    public Devices getDevice() {
+        return device;
+    }
+
+    public void setDevice(Devices device) {
+        this.device = device;
+    }
+
+    public Host getHostTo() {
+        return hostTo;
+    }
+
+    public void setHostTo(Host hostTo) {
+        this.hostTo = hostTo;
+    }
+
+    public Host getHostFrom() {
+        return hostFrom;
+    }
+
+    public void setHostFrom(Host hostFrom) {
+        this.hostFrom = hostFrom;
     }
 }

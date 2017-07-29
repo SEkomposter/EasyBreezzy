@@ -1,6 +1,8 @@
 package by.komposter.ObjectFactory;
 
 import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "hdd")
@@ -10,9 +12,11 @@ public class Hdd {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idhdd")
     int idHdd;
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn (name = "idmodel")
-    Models models;
+
+    //link:"hdd-host"
+    @OneToMany (cascade = CascadeType.ALL)
+    List<Host> hostList = new LinkedList<>();
+
     @Column(name = "vendor")
     String vendor;
     String model;
@@ -56,5 +60,12 @@ public class Hdd {
 
     public void setVendor(String vendor) {
         this.vendor = vendor;
+    }
+    public List<Host> getHostList() {
+        return hostList;
+    }
+
+    public void setHostList(List<Host> hostList) {
+        this.hostList = hostList;
     }
 }

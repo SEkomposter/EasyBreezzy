@@ -12,6 +12,27 @@ public class Host implements Serializable {
     int idHost;
     @Column(name = "regnum")
     int regnum;
+
+    //link: "host-devices"
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "regnum")
+    private Devices device;
+
+    //link: "host-node"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idhost")
+    private Node node;
+
+    //link: "host-cpu"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idcpu")
+    private Cpu cpu;
+
+    //link: "host-hdd"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idhdd")
+    private Hdd hdd;
+
     @Column(name = "hostname")
     String hostName;
     @Column(name = "idcpu")
@@ -26,6 +47,10 @@ public class Host implements Serializable {
     int idHostSoft;
     @Column(name = "screen")
     int screen;
+    @Column(name = "sn")
+    String serialNumber;
+    @Column(name = "pn")
+    String partNumber;
 
     public int getIdHost() {
         return idHost;
@@ -97,6 +122,29 @@ public class Host implements Serializable {
 
     public void setScreen(int screen) {
         this.screen = screen;
+    }
+
+    public Devices getDevice() {
+        return device;
+    }
+
+    public void setDevice(Devices device) {
+        this.device = device;
+    }
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getPartNumber() {
+        return partNumber;
+    }
+
+    public void setPartNumber(String partNumber) {
+        this.partNumber = partNumber;
     }
 }
 

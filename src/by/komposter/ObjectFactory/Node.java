@@ -1,6 +1,8 @@
 package by.komposter.ObjectFactory;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "node")
@@ -9,6 +11,23 @@ public class Node {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idnode")
     int idNode;
+
+    //link: "node-devices"
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "node")
+    private Set<Devices> device = new LinkedHashSet<Devices>();
+
+    //link: "node-host"
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "node")
+    Set<Host> hostSet = new LinkedHashSet<Host>();
+
+    //link: "node-transaction (nodeto)"
+    @OneToOne (mappedBy = "nodeTo")
+    Transaction transactionTo;
+
+    //link: "node-transaction (nodefrom)"
+    @OneToOne (mappedBy = "nodeFrom")
+    Transaction transactionFrom;
+
     @Column(name = "nodeName")
     String nodeName;
     @Column(name = "idnodeuser")

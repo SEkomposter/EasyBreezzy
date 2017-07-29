@@ -1,6 +1,8 @@
 package by.komposter.ObjectFactory;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "devices")
@@ -9,6 +11,20 @@ public class Devices {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "regnum")
     int regnum;
+
+    //link "devices-nodes"
+    @ManyToOne
+    @JoinColumn(name = "idnode")
+    private Node node;
+
+    //link "devices-transactions"
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
+    Set<Transaction> transactionSet = new LinkedHashSet<Transaction>();
+
+    //link "devices-host"
+    @OneToOne(mappedBy = "device")
+    private Host host;
+
     @Column(name = "invnum")
     String invNum;
     @Column(name = "devicetype")
@@ -23,6 +39,10 @@ public class Devices {
     String model;
     @Column(name = "vendor")
     String vendor;
+    @Column(name = "sn")
+    String serialNumber;
+    @Column(name = "pn")
+    String partNumber;
 
     public int getRegnum() {
         return regnum;
@@ -86,5 +106,45 @@ public class Devices {
 
     public void setVendor(String vendor) {
         this.vendor = vendor;
+    }
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
+    }
+
+    public Set<Transaction> getTransactionSet() {
+        return transactionSet;
+    }
+
+    public void setTransactionSet(Set<Transaction> transactionSet) {
+        this.transactionSet = transactionSet;
+    }
+
+    public Host getHost() {
+        return host;
+    }
+
+    public void setHost(Host host) {
+        this.host = host;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getPartNumber() {
+        return partNumber;
+    }
+
+    public void setPartNumber(String partNumber) {
+        this.partNumber = partNumber;
     }
 }
