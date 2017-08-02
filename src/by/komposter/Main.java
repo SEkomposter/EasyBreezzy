@@ -15,8 +15,7 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            //dbc.dbCreate("db5");
-            //dbc.connect("db4");
+            // dbc.dbCreate("EasyBreezzy");
             HibernateUtil hibernateUtil = new HibernateUtil();
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
 

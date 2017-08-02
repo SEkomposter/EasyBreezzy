@@ -47,10 +47,11 @@ public class SQLFileReader {
         input.close();
         sqlStrings=(stringBuilder.toString().split(";"));
         for (String str: sqlStrings) {
-            cmds.add(str);
+            cmds.add(str+";");
         }
         return cmds;
     }
+
 
     public ArrayList<String> changeSQLscript(ArrayList<String> queries, String newDB) {
         ArrayList<String> tempIn = new ArrayList<>();

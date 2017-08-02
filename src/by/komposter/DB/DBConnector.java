@@ -2,8 +2,14 @@ package by.komposter.DB;
 
 import by.komposter.Core.AppSettings;
 import by.komposter.Notificator.Notificator;
+import com.mysql.jdbc.*;
+
 import java.io.IOException;
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
@@ -70,7 +76,7 @@ public class DBConnector {
             setDBName(newdb);
             stm = connect().prepareStatement(query);
             stm.executeUpdate();
-            loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
+           loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
             stm.close();
             Notificator.pushToScreenNlog("DB: \"" + newdb + "\" created", this.getClass() );
 
@@ -78,22 +84,25 @@ public class DBConnector {
             Notificator.pushToScreenNlog(e, this.getClass());
         }
     }
+
     public void loadScheme(ArrayList<String> qList) throws IOException,SQLException{
+
         Notificator.pushToScreenNlog("Loading scheme for DB...", this.getClass());
         Iterator it = qList.iterator();
-        Statement stm = connection.createStatement();
+        Statement stm2 = connection.createStatement();
 
         try {
             while (it.hasNext()) {
-                stm.addBatch((String) it.next());
+                stm2.addBatch((String) it.next());
+
             }
-            stm.executeBatch();
+            stm2.executeBatch();
             Notificator.pushToScreenNlog("Loading scheme completed successfully", this.getClass());
         }catch(SQLException e){
             Notificator.pushToScreenNlog(e, this.getClass());
         }
         finally {
-            stm.close();
+            stm2.close();
         }
 
     }
