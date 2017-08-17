@@ -28,10 +28,25 @@ public class Host implements Serializable {
     @JoinColumn (name = "idcpu")
     private Cpu cpu;
 
+    //link: "host-memory"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idmemory")
+    private Memory memory;
+
+    //link: "host-gpu"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idgpu")
+    private Gpu gpu;
+
     //link: "host-hdd"
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "idhdd")
     private Hdd hdd;
+
+    //link: "host-soft"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "idhostsoft")
+    private Soft soft;
 
     @Column(name = "hostname")
     String hostName;

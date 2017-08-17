@@ -12,6 +12,11 @@ public class Node {
     @Column(name = "idnode")
     int idNode;
 
+    //link: "node-nodeuser"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idnode")
+    private NodeUser nodeUser;
+
     //link: "node-devices"
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "node")
     private Set<Devices> device = new LinkedHashSet<Devices>();

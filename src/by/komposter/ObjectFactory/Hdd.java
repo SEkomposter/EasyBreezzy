@@ -19,8 +19,12 @@ public class Hdd {
 
     @Column(name = "vendor")
     String vendor;
+    @Column(name = "model")
     String model;
-    int capacity,rpm;
+    @Column(name = "capacity")
+    int capacity;
+    @Column(name = "rpm")
+    int rpm;
 
     public String getModel() {
         return model;

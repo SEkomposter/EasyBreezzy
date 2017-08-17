@@ -14,7 +14,7 @@ public class Cpu {
     int idCpu;
 
     //link:"cpu-host"
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "cpu")
     List<Host> hostList = new LinkedList<>();
 
     String model;

@@ -1,10 +1,36 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+@Entity
+@Table(name = "soft")
 public  class Soft{
-    int idHostSoft, idAdmin;
-    String softName, version, revision, lictype, licDateInst;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idhostsoft")
+    int idHostSoft;
+
+    //link:"soft-host"
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "soft")
+    List<Host> hostList = new LinkedList<>();
+
+    @Column(name = "softname")
+    String softName;
+    @Column(name = "version")
+    String version;
+    @Column(name = "revision")
+    String revision;
+    @Column(name = "licdateinst")
+    String licDateInst;
+    @Column(name = "licterm")
+    String licTerm;
+    @Column(name = "idadmin")
+    int idAdmin;
+    @Column(name = "lictype")
+    String lictype;
     Date date;
 
     public int getIdHostSoft() {

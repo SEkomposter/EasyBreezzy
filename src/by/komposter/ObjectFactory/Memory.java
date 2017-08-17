@@ -1,7 +1,29 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
+import java.util.LinkedList;
+import java.util.List;
+
+@Entity
+@Table(name = "memory")
 public class Memory {
-    int idMemory, idModel, memCapacity, freq;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idmemory")
+    int idMemory;
+
+    //link:"cpu-host"
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "memory")
+    List<Host> hostList = new LinkedList<>();
+
+    @Column(name = "model")
+    String model;
+
+    @Column(name = "memcapacity")
+    int memCapacity;
+    @Column(name = "frequency")
+    int freq;
+    @Column(name = "type")
     String type;
 
     public int getIdMemory() {
@@ -12,12 +34,12 @@ public class Memory {
         this.idMemory = idMemory;
     }
 
-    public int getIdModel() {
-        return idModel;
+    public String getModel() {
+        return model;
     }
 
-    public void setIdModel(int idModel) {
-        this.idModel = idModel;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getMemCapacity() {
@@ -43,4 +65,5 @@ public class Memory {
     public void setType(String type) {
         this.type = type;
     }
+
 }

@@ -1,8 +1,26 @@
 package by.komposter.ObjectFactory;
 
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "nodeuser")
 public class NodeUser {
-    int idNodeUser, isAdmin;
-    String login, password, surname, name, otchestvo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idnodeuser")
+    int idNodeUser;
+    @Column(name = "surname")
+    String surname;
+    @Column(name = "name")
+    String name;
+    @Column(name = "otchestvo")
+    String secondName;
+
+    //link: "nodeuser-node"
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "nodeUser")
+    private Set<Node> nodeSet = new LinkedHashSet<Node>();
 
     public int getIdNodeUser() {
         return idNodeUser;
@@ -10,22 +28,6 @@ public class NodeUser {
 
     public void setIdNodeUser(int idNodeUser) {
         this.idNodeUser = idNodeUser;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getSurname() {
@@ -44,19 +46,12 @@ public class NodeUser {
         this.name = name;
     }
 
-    public String getOtchestvo() {
-        return otchestvo;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setOtchestvo(String otchestvo) {
-        this.otchestvo = otchestvo;
+    public void setOtchestvo(String secondName) {
+        this.secondName = secondName;
     }
 
-    public boolean getIsAdmin() {
-        return (isAdmin==1?true:false);
-    }
-
-    public void setIsAdmin(boolean adm) {
-        if (adm) this.isAdmin = 1;
-    }
 }

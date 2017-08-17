@@ -19,6 +19,11 @@ public class Transaction {
     @JoinColumn(name = "regnum")
     private Devices device;
 
+    //link: "transaction-admins"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idadmin")
+    private Admins admin;
+
     //link: "transaction-node (nodeto)"
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idNodeTo")
