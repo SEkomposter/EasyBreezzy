@@ -7,6 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name = "transaction")
 public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idtransaction")
@@ -27,14 +28,14 @@ public class Transaction {
     //link: "transaction-node (nodeto)"
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idNodeTo")
-    Host hostTo;
+    Node nodeTo;
 
     //link: "transaction-node (nodefrom)"
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idNodeFrom")
-    Host hostFrom;
+    Node nodeFrom;
 
-    @Column(name = "idNodeFrom")
+  //  @Column(name = "idNodeFrom")
     int idNodeFrom;
     @Column(name = "idNodeto")
     int idNodeTo;
@@ -115,19 +116,19 @@ public class Transaction {
         this.device = device;
     }
 
-    public Host getHostTo() {
-        return hostTo;
+    public Node getNodeTo() {
+        return nodeTo;
     }
 
-    public void setHostTo(Host hostTo) {
-        this.hostTo = hostTo;
+    public void setNodeTo(Node nodeTo) {
+        this.nodeTo = nodeTo;
     }
 
-    public Host getHostFrom() {
-        return hostFrom;
+    public Node getNodeFrom() {
+        return nodeFrom;
     }
 
-    public void setHostFrom(Host hostFrom) {
-        this.hostFrom = hostFrom;
+    public void setNodeFrom(Node hostFrom) {
+        this.nodeFrom = hostFrom;
     }
 }
