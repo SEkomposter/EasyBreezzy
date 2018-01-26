@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 
 public interface ObjectFactory {
     void create();

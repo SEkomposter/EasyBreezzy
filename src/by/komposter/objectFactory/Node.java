@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -9,7 +9,7 @@ import java.util.Set;
 public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idnode")
+    //@Column(name = "idnode")
     int idNode;
 
     //link: "node-nodeuser"

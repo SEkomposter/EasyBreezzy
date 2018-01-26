@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 
 import javax.persistence.*;
 import java.util.Date;

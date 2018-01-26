@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -29,7 +29,7 @@ public class Devices {
     String invNum;
     @Column(name = "devicetype")
     String deviceType;
-    @Column(name = "idnode")
+    //@Column(name = "idnode")
     int idNode;
     @Column(name = "state")
     String state;

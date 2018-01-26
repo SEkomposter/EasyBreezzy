@@ -12,17 +12,17 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
 
-        <mapping class="by.komposter.ObjectFactory.NodeUser" />
-        <mapping class="by.komposter.ObjectFactory.Node" />
-        <mapping class="by.komposter.ObjectFactory.Devices" />
-        <mapping class="by.komposter.ObjectFactory.Host" />
-        <mapping class="by.komposter.ObjectFactory.Transaction" />
-        <mapping class="by.komposter.ObjectFactory.Admins" />
-        <mapping class="by.komposter.ObjectFactory.Cpu" />
-        <mapping class="by.komposter.ObjectFactory.Gpu" />
-        <mapping class="by.komposter.ObjectFactory.Memory" />
-        <mapping class="by.komposter.ObjectFactory.Hdd" />
-        <mapping class="by.komposter.ObjectFactory.Soft" />
+        <mapping class="by.komposter.objectFactory.NodeUser"/>
+        <mapping class="by.komposter.objectFactory.Node"/>
+        <mapping class="by.komposter.objectFactory.Devices"/>
+        <mapping class="by.komposter.objectFactory.Host"/>
+        <mapping class="by.komposter.objectFactory.Transaction"/>
+        <mapping class="by.komposter.objectFactory.Admins"/>
+        <mapping class="by.komposter.objectFactory.Cpu"/>
+        <mapping class="by.komposter.objectFactory.Gpu"/>
+        <mapping class="by.komposter.objectFactory.Memory"/>
+        <mapping class="by.komposter.objectFactory.Hdd"/>
+        <mapping class="by.komposter.objectFactory.Soft"/>
 
     </session-factory>
 </hibernate-configuration>

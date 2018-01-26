@@ -3,10 +3,9 @@ package by.komposter;
 import Util.HibernateUtil;
 import by.komposter.DB.DBConnector;
 import by.komposter.Notificator.Notificator;
-import by.komposter.ObjectFactory.*;
+import by.komposter.objectFactory.*;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import java.sql.Connection;
 
 public class Main {
 
@@ -18,7 +17,14 @@ public class Main {
             // dbc.dbCreate("EasyBreezzy");
             HibernateUtil hibernateUtil = new HibernateUtil();
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
-
+            Node node1 = new Node();
+            node1.setNodeName("Иванов");
+            node1.setDepartment("ОТО");
+            node1.setSbe("АлюминТехно");
+            Session session = sessionFactory.openSession();
+            session.save(node1);
+            session.getTransaction().commit();
+            session.close();
             sessionFactory.close();
 
         } catch (Exception e) {

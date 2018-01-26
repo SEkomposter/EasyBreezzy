@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ public class Host implements Serializable {
     public Host(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idhost")
+    //@Column(name = "idhost")
     int idHost;
-    @Column(name = "regnum")
-    int regnum;
+    //@Column(name = "regnum")
+    //int regnum;
 
     //link: "host-devices"
     @OneToOne(cascade = CascadeType.ALL)
@@ -50,15 +50,15 @@ public class Host implements Serializable {
 
     @Column(name = "hostname")
     String hostName;
-    @Column(name = "idcpu")
+    //@Column(name = "idcpu")
     int idCpu;
-    @Column(name = "idmemory")
+    //@Column(name = "idmemory")
     int idMemory;
-    @Column(name = "idhdd")
+    //@Column(name = "idhdd")
     int idHdd;
-    @Column(name = "idgpu")
+    //@Column(name = "idgpu")
     int idGpu;
-    @Column(name = "idhostsoft")
+   //@Column(name = "idhostsoft")
     int idHostSoft;
     @Column(name = "screen")
     int screen;
@@ -71,9 +71,9 @@ public class Host implements Serializable {
         return idHost;
     }
 
-    public int getRegnum() {
-        return regnum;
-    }
+    //public int getRegnum() {
+    //    return regnum;
+   // }
 
     public int getIdMemory() {
         return idMemory;
@@ -131,9 +131,9 @@ public class Host implements Serializable {
         this.idHostSoft = idHostSoft;
     }
 
-    public void setRegnum(int regnum) {
-        this.regnum = regnum;
-    }
+    //public void setRegnum(int regnum) {
+     //   this.regnum = regnum;
+    //}
 
     public void setScreen(int screen) {
         this.screen = screen;

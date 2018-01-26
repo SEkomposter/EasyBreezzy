@@ -1,4 +1,4 @@
-package by.komposter.ObjectFactory;
+package by.komposter.objectFactory;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -12,12 +12,12 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idtransaction")
     int idTransaction;
-    @Column(name = "regnum")
+    //@Column(name = "regnum")
     int regnum;
 
     //link: "transaction-devices"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "regnum")
+    @JoinColumn(name = "regnum",insertable=false, updatable=false)
     private Devices device;
 
     //link: "transaction-admins"
@@ -27,19 +27,19 @@ public class Transaction {
 
     //link: "transaction-node (nodeto)"
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idNodeTo")
+    @JoinColumn(name = "idNodeTo",insertable=false, updatable=false)
     Node nodeTo;
 
     //link: "transaction-node (nodefrom)"
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idNodeFrom")
+    @JoinColumn(name = "idNodeFrom",insertable=false, updatable=false)
     Node nodeFrom;
 
-  //  @Column(name = "idNodeFrom")
+    //@Column(name = "idNodeFrom")
     int idNodeFrom;
-    @Column(name = "idNodeto")
+    //@Column(name = "idNodeto")
     int idNodeTo;
-    @Column(name = "idadmin")
+    //@Column(name = "idadmin")
     int idAdmin;
     @Column(name = "reason")
     String reason;
