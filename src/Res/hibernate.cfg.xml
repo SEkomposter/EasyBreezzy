@@ -11,6 +11,7 @@
         <property name="hibernate.connection.password">dba1</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
+        <property name="hibernate.id.new_generator_mappings">false</property>
 
         <mapping class="by.komposter.objectFactory.NodeUser"/>
         <mapping class="by.komposter.objectFactory.Node"/>

@@ -14,7 +14,7 @@ public class Node {
 
     //link: "node-nodeuser"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idnode")
+    @JoinColumn(name = "idnodeuser")
     private NodeUser nodeUser;
 
     //link: "node-devices"
@@ -35,8 +35,8 @@ public class Node {
 
     @Column(name = "nodeName")
     String nodeName;
-    @Column(name = "idnodeuser")
-    int idNodeUser;
+    //@Column(name = "idnodeuser")
+
     @Column(name = "idhost")
     int idHost;
     @Column(name = "Sbe")
@@ -45,6 +45,7 @@ public class Node {
     String department;
     @Column(name = "location")
     String location;
+    //int idNodeUser;
 
     public int getIdNode() {
         return idNode;
@@ -54,13 +55,13 @@ public class Node {
         this.idNode = idNode;
     }
 
-    public int getIdNodeUser() {
-        return idNodeUser;
-    }
+   // public int getIdNodeUser() {
+     //   return idNodeUser;
+    //}
 
-    public void setIdNodeUser(int idNodeUser) {
-        this.idNodeUser = idNodeUser;
-    }
+//    public void setIdNodeUser(int idNodeUser) {
+        //this.idNodeUser = idNodeUser;
+   // }
 
     public int getIdHost() {
         return idHost;

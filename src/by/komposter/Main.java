@@ -14,14 +14,17 @@ public class Main {
         DBConnector dbc = new DBConnector();
         try {
             //1 создание новой БД
-            // dbc.dbCreate("EasyBreezzy");
+            dbc.dbCreate("EasyBreezzy");
             HibernateUtil hibernateUtil = new HibernateUtil();
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
+            Host host1 = new Host();
             Node node1 = new Node();
             node1.setNodeName("Иванов");
             node1.setDepartment("ОТО");
             node1.setSbe("АлюминТехно");
+            node1.setIdHost(0);
             Session session = sessionFactory.openSession();
+            session.save(host1);
             session.save(node1);
             session.getTransaction().commit();
             session.close();

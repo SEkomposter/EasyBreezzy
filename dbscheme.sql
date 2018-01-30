@@ -110,15 +110,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `EasyInv`.`host` (
   `idhost` INT NOT NULL,
-  `regnum` INT NOT NULL,
-  `hostname` VARCHAR(45) NOT NULL,
-  `domainname` VARCHAR(45) NULL,
-  `idmemory` INT NOT NULL,
-  `idHDD` INT NOT NULL,
-  `idGPU` INT NOT NULL,
-  `idhostsoft` INT NOT NULL,
+  `regnum` INT NULL,
+  `hostname` VARCHAR(45) NULL,
+  `domainname` VARCHAR(45) ,
+  `idmemory` INT NULL,
+  `idHDD` INT NULL,
+  `idGPU` INT NULL,
+  `idhostsoft` INT NULL,
   `screen` INT NULL,
-  `idcpu` INT NOT NULL,
+  `idcpu` INT NULL,
   `sn` VARCHAR(25) NULL,
   `pn` VARCHAR(25) NULL,
   PRIMARY KEY (`idhost`),
@@ -167,10 +167,10 @@ ENGINE = InnoDB;
 -- Table `EasyInv`.`node`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `EasyInv`.`node` (
-  `idnode` INT NOT NULL,
+  `idnode` INT NOT NULL AUTO_INCREMENT,
   `nodeName` VARCHAR(45) NOT NULL,
   `idnodeuser` INT NULL,
-  `idhost` INT NULL,
+  `idhost` INT NOT NULL,
   `SBE` VARCHAR(30) NOT NULL,
   `location` VARCHAR(100) NULL,
   `department` VARCHAR(30) NOT NULL,
@@ -183,13 +183,13 @@ CREATE TABLE IF NOT EXISTS `EasyInv`.`node` (
   CONSTRAINT `idnodeuser`
     FOREIGN KEY (`idnodeuser`)
     REFERENCES `EasyInv`.`nodeuser` (`idnodeuser`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `idhost`
     FOREIGN KEY (`idhost`)
     REFERENCES `EasyInv`.`host` (`idhost`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 

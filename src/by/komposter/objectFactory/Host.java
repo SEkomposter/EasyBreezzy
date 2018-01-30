@@ -51,15 +51,15 @@ public class Host implements Serializable {
     @Column(name = "hostname")
     String hostName;
     //@Column(name = "idcpu")
-    int idCpu;
+
     //@Column(name = "idmemory")
-    int idMemory;
+
     //@Column(name = "idhdd")
-    int idHdd;
+
     //@Column(name = "idgpu")
-    int idGpu;
+
    //@Column(name = "idhostsoft")
-    int idHostSoft;
+    //int idHostSoft;
     @Column(name = "screen")
     int screen;
     @Column(name = "sn")
@@ -75,21 +75,6 @@ public class Host implements Serializable {
     //    return regnum;
    // }
 
-    public int getIdMemory() {
-        return idMemory;
-    }
-
-    public int getIdHdd() {
-        return idHdd;
-    }
-
-    public int getIdGpu() {
-        return idGpu;
-    }
-
-    public int getIdHostSoft() {
-        return idHostSoft;
-    }
 
     public int getScreen() {
         return screen;
@@ -97,10 +82,6 @@ public class Host implements Serializable {
 
     public String getHostName() {
         return hostName;
-    }
-
-    public int getIdCpu() {
-        return idCpu;
     }
 
     public void setIdHost(int idHost) {
@@ -111,25 +92,7 @@ public class Host implements Serializable {
         this.hostName = hostName;
     }
 
-    public void setIdCpu(int idCpu) {
-        this.idCpu = idCpu;
-    }
 
-    public void setIdGpu(int idGpu) {
-        this.idGpu = idGpu;
-    }
-
-    public void setIdHdd(int idHdd) {
-        this.idHdd = idHdd;
-    }
-
-    public void setIdMemory(int idMemory) {
-        this.idMemory = idMemory;
-    }
-
-    public void setIdHostSoft(int idHostSoft) {
-        this.idHostSoft = idHostSoft;
-    }
 
     //public void setRegnum(int regnum) {
      //   this.regnum = regnum;
