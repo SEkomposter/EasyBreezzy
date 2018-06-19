@@ -37,7 +37,7 @@ public class Node {
     String nodeName;
     //@Column(name = "idnodeuser")
 
-    @Column(name = "idhost")
+    @Column(name = "idHost")
     int idHost;
     @Column(name = "Sbe")
     String Sbe;
