@@ -18,13 +18,13 @@ public class Cpu {
     List<Host> hostList = new LinkedList<>();
 
     String model;
-    @Column(name = "frequency")
+    @Column(name = "frequency", columnDefinition = "varchar default null")
     int frequency;
-    @Column(name = "coresNum")
+    @Column(name = "coresNum", columnDefinition = "int default null")
     int coresNum;
-    @Column(name = "cashe3lvl")
+    @Column(name = "cashe3lvl", columnDefinition = "int default null")
     int cache3lvl;
-    @Column(name = "vendor")
+    @Column(name = "vendor", columnDefinition = "int default null")
     int vendor;
 
     public int getIdCpu() {

@@ -37,7 +37,7 @@ public class Node {
     String nodeName;
     //@Column(name = "idnodeuser")
 
-    @Column(name = "idHost")
+    @Column(name = "idHost",nullable = false)
     int idHost;
     @Column(name = "Sbe")
     String Sbe;
@@ -62,6 +62,15 @@ public class Node {
 //    public void setIdNodeUser(int idNodeUser) {
         //this.idNodeUser = idNodeUser;
    // }
+
+
+    public Set<Host> getHostSet() {
+        return hostSet;
+    }
+
+    public void setHostSet(Set<Host> hostSet) {
+        this.hostSet = hostSet;
+    }
 
     public int getIdHost() {
         return idHost;

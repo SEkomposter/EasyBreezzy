@@ -20,7 +20,7 @@ public class Host implements Serializable {
 
     //link: "host-node"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idhost")
+    @JoinColumn(name = "idhost",nullable = false)
     private Node node;
 
     //link: "host-cpu"
@@ -92,9 +92,11 @@ public class Host implements Serializable {
         this.hostName = hostName;
     }
 
+    public void setNode(Node node) {
+        this.node = node;
+    }
 
-
-    //public void setRegnum(int regnum) {
+//public void setRegnum(int regnum) {
      //   this.regnum = regnum;
     //}
 

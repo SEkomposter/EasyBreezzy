@@ -76,7 +76,7 @@ public class DBConnector {
             setDBName(newdb);
             stm = connect().prepareStatement(query);
             stm.executeUpdate();
-           loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
+           //loadScheme(sqlQuery.changeSQLscript(sqlQuery.read(),newdb));
             stm.close();
             Notificator.pushToScreenNlog("DB: \"" + newdb + "\" created", this.getClass() );
 

@@ -14,7 +14,7 @@ public class Hdd {
     int idHdd;
 
     //link:"hdd-host"
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "hdd")
     List<Host> hostList = new LinkedList<>();
 
     @Column(name = "vendor")
