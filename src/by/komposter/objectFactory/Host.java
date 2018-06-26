@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Host implements Serializable {
     public Host(){}
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //@Column(name = "idhost")
     int idHost;
     //@Column(name = "regnum")

@@ -26,27 +26,29 @@ public class Main {
             HibernateUtil hibernateUtil = new HibernateUtil();
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
-            Node node1 = new Node();
+            session.beginTransaction();
             Host host1 = new Host();
-            host1.setIdHost(1);
+            Host host2 = new Host();
+            host1.setHostName("ivanov");
+            host2.setHostName("petrov");
+            Node node1 = new Node();
 
-
+            node1.getHostSet().add(host1);
             node1.setNodeName("Иванов");
             node1.setDepartment("ОТО");
             node1.setSbe("АлюминТехно");
-            node1.getHostSet().add(host1);
-            node1.setIdHost(1);
-            session.beginTransaction();
+            host1.setNode(node1);
+
             session.saveOrUpdate(node1);
-            session.getTransaction().commit();
-            session.beginTransaction();
-
             session.saveOrUpdate(host1);
-           //
             session.getTransaction().commit();
-           // session.beginTransaction();
-
-           // session.getTransaction().commit();
+            session.close();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            node1.getHostSet().add(host2);
+            host2.setNode(node1);
+            session.saveOrUpdate(host2);
+            session.getTransaction().commit();
             session.close();
             sessionFactory.close();
 
