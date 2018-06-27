@@ -14,7 +14,7 @@ public  class Soft{
     int idHostSoft;
 
     //link:"soft-host"
-    @OneToMany (cascade = CascadeType.ALL,mappedBy = "soft")
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_soft", joinColumns = @JoinColumn(name = "idHostSoft"),inverseJoinColumns = @JoinColumn(name = "idhostsoft"))
     List<Host> hostList = new LinkedList<>();
 
     @Column(name = "softname")

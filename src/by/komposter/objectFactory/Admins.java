@@ -9,7 +9,7 @@ import java.util.Set;
 public class Admins {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idadmin")
+    @Column(name = "idAdmin")
     int idAdmin;
 
     //link "admins-transactions"

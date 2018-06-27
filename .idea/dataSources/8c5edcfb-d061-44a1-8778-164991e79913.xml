@@ -16,17 +16,12 @@
     <table id="10" parent="6" name="gpu"/>
     <table id="11" parent="6" name="hdd"/>
     <table id="12" parent="6" name="host"/>
-    <table id="13" parent="6" name="memory"/>
-    <table id="14" parent="6" name="node"/>
-    <table id="15" parent="6" name="nodeuser"/>
-    <table id="16" parent="6" name="soft"/>
-    <table id="17" parent="6" name="transaction"/>
-    <column id="18" parent="7" name="idadmin">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
+    <table id="13" parent="6" name="host_soft"/>
+    <table id="14" parent="6" name="memory"/>
+    <table id="15" parent="6" name="node"/>
+    <table id="16" parent="6" name="nodeuser"/>
+    <table id="17" parent="6" name="soft"/>
+    <table id="18" parent="6" name="transaction"/>
     <column id="19" parent="7" name="surname">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
@@ -51,16 +46,16 @@
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="25" parent="7" name="PRIMARY">
-      <ColNames>idadmin</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="26" parent="8" name="idcpu">
+    <column id="25" parent="7" name="idAdmin">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
+    <key id="26" parent="7" name="PRIMARY">
+      <ColNames>idAdmin</ColNames>
+      <Primary>1</Primary>
+    </key>
     <column id="27" parent="8" name="model">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
@@ -81,136 +76,138 @@
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="32" parent="8" name="PRIMARY">
-      <ColNames>idcpu</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="33" parent="9" name="regnum">
+    <column id="32" parent="8" name="idCpu">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="34" parent="9" name="invnum">
+    <key id="33" parent="8" name="PRIMARY">
+      <ColNames>idCpu</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="9" name="regnum">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="9" name="invnum">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="35" parent="9" name="devicetype">
+    <column id="36" parent="9" name="devicetype">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="36" parent="9" name="state">
+    <column id="37" parent="9" name="state">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="37" parent="9" name="description">
+    <column id="38" parent="9" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="38" parent="9" name="model">
+    <column id="39" parent="9" name="model">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="39" parent="9" name="vendor">
+    <column id="40" parent="9" name="vendor">
       <Position>10</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="40" parent="9" name="sn">
+    <column id="41" parent="9" name="sn">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="41" parent="9" name="pn">
+    <column id="42" parent="9" name="pn">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="42" parent="9" name="idNode">
+    <column id="43" parent="9" name="idNode">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="43" parent="9" name="FKd3ajavss4c3bmuxu8v64urj98">
+    <index id="44" parent="9" name="FKd3ajavss4c3bmuxu8v64urj98">
       <ColNames>idNode</ColNames>
     </index>
-    <key id="44" parent="9" name="PRIMARY">
+    <key id="45" parent="9" name="PRIMARY">
       <ColNames>regnum</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="45" parent="9" name="FKd3ajavss4c3bmuxu8v64urj98">
+    <foreign-key id="46" parent="9" name="FKd3ajavss4c3bmuxu8v64urj98">
       <ColNames>idNode</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>node</RefTableName>
-      <RefColNames>idNode</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="46" parent="10" name="idgpu">
+    <column id="47" parent="10" name="idgpu">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="47" parent="10" name="model">
+    <column id="48" parent="10" name="model">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="48" parent="10" name="frequency">
+    <column id="49" parent="10" name="frequency">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="49" parent="10" name="vendor">
+    <column id="50" parent="10" name="vendor">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="50" parent="10" name="memcapacity">
+    <column id="51" parent="10" name="memcapacity">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="51" parent="10" name="memtype">
+    <column id="52" parent="10" name="memtype">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="52" parent="10" name="PRIMARY">
+    <key id="53" parent="10" name="PRIMARY">
       <ColNames>idgpu</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="53" parent="11" name="idhdd">
+    <column id="54" parent="11" name="idhdd">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="54" parent="11" name="model">
+    <column id="55" parent="11" name="model">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="55" parent="11" name="capacity">
+    <column id="56" parent="11" name="capacity">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="56" parent="11" name="rpm">
+    <column id="57" parent="11" name="rpm">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="57" parent="11" name="vendor">
+    <column id="58" parent="11" name="vendor">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="58" parent="11" name="PRIMARY">
+    <key id="59" parent="11" name="PRIMARY">
       <ColNames>idhdd</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="59" parent="12" name="regnum">
+    <column id="60" parent="12" name="regnum">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="60" parent="12" name="hostname">
+    <column id="61" parent="12" name="hostname">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="61" parent="12" name="idmemory">
+    <column id="62" parent="12" name="idmemory">
       <Position>10</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <column id="62" parent="12" name="idhostsoft">
-      <Position>11</Position>
       <DataType>int(11)|0</DataType>
     </column>
     <column id="63" parent="12" name="screen">
@@ -230,9 +227,8 @@
       <DataType>varchar(255)|0</DataType>
     </column>
     <column id="67" parent="12" name="idHost">
-      <Position>1</Position>
+      <Position>11</Position>
       <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
     <column id="68" parent="12" name="idgpu">
@@ -243,11 +239,14 @@
       <Position>9</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="70" parent="12" name="FK10ot19nci5f1xrqim0mxqc1x9">
+    <column id="70" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <index id="71" parent="12" name="FK10ot19nci5f1xrqim0mxqc1x9">
       <ColNames>idcpu</ColNames>
-    </index>
-    <index id="71" parent="12" name="FK7elmwr774l7txnsg9jq6ftmjt">
-      <ColNames>idhostsoft</ColNames>
     </index>
     <index id="72" parent="12" name="FKfe780w9y24h81dmde23u297sn">
       <ColNames>idhdd</ColNames>
@@ -261,21 +260,18 @@
     <index id="75" parent="12" name="FKrjyy92mq7cndjbhvfo9pfo70v">
       <ColNames>idgpu</ColNames>
     </index>
-    <key id="76" parent="12" name="PRIMARY">
+    <index id="76" parent="12" name="FKsbdi8s0dlwchtppsq650ieu65">
       <ColNames>idHost</ColNames>
+    </index>
+    <key id="77" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="77" parent="12" name="FK4jb4h66pjsrxnikty6kxs1be7">
-      <ColNames>idHost</ColNames>
-      <RefSchemaName>easybreezzy</RefSchemaName>
-      <RefTableName>node</RefTableName>
-      <RefColNames>idNode</RefColNames>
-    </foreign-key>
     <foreign-key id="78" parent="12" name="FK10ot19nci5f1xrqim0mxqc1x9">
       <ColNames>idcpu</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>cpu</RefTableName>
-      <RefColNames>idcpu</RefColNames>
+      <RefColNames>idCpu</RefColNames>
     </foreign-key>
     <foreign-key id="79" parent="12" name="FKr0wg1p5hoid6j641l1eesimts">
       <ColNames>regnum</ColNames>
@@ -301,218 +297,228 @@
       <RefTableName>memory</RefTableName>
       <RefColNames>idmemory</RefColNames>
     </foreign-key>
-    <foreign-key id="83" parent="12" name="FK7elmwr774l7txnsg9jq6ftmjt">
-      <ColNames>idhostsoft</ColNames>
+    <foreign-key id="83" parent="12" name="FKsbdi8s0dlwchtppsq650ieu65">
+      <ColNames>idHost</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
-      <RefTableName>soft</RefTableName>
-      <RefColNames>idhostsoft</RefColNames>
+      <RefTableName>node</RefTableName>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="84" parent="13" name="idmemory">
+    <column id="84" parent="13" name="idHostSoft">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="85" parent="13" name="FK3on7jx91mvnf3n27t045ntabx">
+      <ColNames>idHostSoft</ColNames>
+    </index>
+    <foreign-key id="86" parent="13" name="FK3on7jx91mvnf3n27t045ntabx">
+      <ColNames>idHostSoft</ColNames>
+      <RefSchemaName>easybreezzy</RefSchemaName>
+      <RefTableName>host</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="87" parent="14" name="idmemory">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="85" parent="13" name="model">
+    <column id="88" parent="14" name="model">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="86" parent="13" name="frequency">
+    <column id="89" parent="14" name="frequency">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="87" parent="13" name="type">
+    <column id="90" parent="14" name="type">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="88" parent="13" name="memcapacity">
+    <column id="91" parent="14" name="memcapacity">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="89" parent="13" name="PRIMARY">
+    <key id="92" parent="14" name="PRIMARY">
       <ColNames>idmemory</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="90" parent="14" name="nodeName">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="91" parent="14" name="idnodeuser">
-      <Position>7</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <column id="92" parent="14" name="location">
+    <column id="93" parent="15" name="nodeName">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="93" parent="14" name="department">
+    <column id="94" parent="15" name="idnodeuser">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="95" parent="15" name="location">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="96" parent="15" name="department">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="94" parent="14" name="idNode">
+    <column id="97" parent="15" name="Sbe">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="98" parent="15" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="95" parent="14" name="Sbe">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="96" parent="14" name="idHost">
-      <Position>4</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <index id="97" parent="14" name="FK4iwviqd505403xp9h3l3exnh8">
+    <index id="99" parent="15" name="FK4iwviqd505403xp9h3l3exnh8">
       <ColNames>idnodeuser</ColNames>
     </index>
-    <key id="98" parent="14" name="PRIMARY">
-      <ColNames>idNode</ColNames>
+    <key id="100" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="99" parent="14" name="FK4iwviqd505403xp9h3l3exnh8">
+    <foreign-key id="101" parent="15" name="FK4iwviqd505403xp9h3l3exnh8">
       <ColNames>idnodeuser</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>nodeuser</RefTableName>
       <RefColNames>idnodeuser</RefColNames>
     </foreign-key>
-    <column id="100" parent="15" name="idnodeuser">
+    <column id="102" parent="16" name="idnodeuser">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="101" parent="15" name="surname">
+    <column id="103" parent="16" name="surname">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="102" parent="15" name="name">
+    <column id="104" parent="16" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="103" parent="15" name="otchestvo">
+    <column id="105" parent="16" name="otchestvo">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="104" parent="15" name="PRIMARY">
+    <key id="106" parent="16" name="PRIMARY">
       <ColNames>idnodeuser</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="105" parent="16" name="idhostsoft">
+    <column id="107" parent="17" name="idhostsoft">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="106" parent="16" name="softname">
+    <column id="108" parent="17" name="softname">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="107" parent="16" name="version">
+    <column id="109" parent="17" name="version">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="108" parent="16" name="revision">
+    <column id="110" parent="17" name="revision">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="109" parent="16" name="lictype">
+    <column id="111" parent="17" name="lictype">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="110" parent="16" name="licdateinst">
+    <column id="112" parent="17" name="licdateinst">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="111" parent="16" name="licterm">
+    <column id="113" parent="17" name="licterm">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="112" parent="16" name="idadmin">
+    <column id="114" parent="17" name="idadmin">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="113" parent="16" name="date">
+    <column id="115" parent="17" name="date">
       <Position>2</Position>
       <DataType>datetime(6)|0</DataType>
     </column>
-    <key id="114" parent="16" name="PRIMARY">
+    <key id="116" parent="17" name="PRIMARY">
       <ColNames>idhostsoft</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="115" parent="17" name="idtransaction">
+    <column id="117" parent="18" name="idtransaction">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="116" parent="17" name="regnum">
+    <column id="118" parent="18" name="regnum">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="117" parent="17" name="reason">
+    <column id="119" parent="18" name="reason">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="118" parent="17" name="date">
+    <column id="120" parent="18" name="date">
       <Position>2</Position>
       <DataType>datetime(6)|0</DataType>
     </column>
-    <column id="119" parent="17" name="idAdmin">
+    <column id="121" parent="18" name="idAdmin">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="120" parent="17" name="idNodeFrom">
+    <column id="122" parent="18" name="idNodeFrom">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="121" parent="17" name="idNodeTo">
+    <column id="123" parent="18" name="idNodeTo">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="122" parent="17" name="transactionDate">
+    <column id="124" parent="18" name="transactionDate">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <index id="123" parent="17" name="FKng9tdlw2hxg32tiereckj9spp">
+    <index id="125" parent="18" name="FKng9tdlw2hxg32tiereckj9spp">
       <ColNames>idAdmin</ColNames>
     </index>
-    <index id="124" parent="17" name="FKnpmhvp16eyt6c99pds5no97nk">
+    <index id="126" parent="18" name="FKnpmhvp16eyt6c99pds5no97nk">
       <ColNames>idNodeFrom</ColNames>
     </index>
-    <index id="125" parent="17" name="FKqo2erb77l9qoerbyhv6jj2qme">
+    <index id="127" parent="18" name="FKqo2erb77l9qoerbyhv6jj2qme">
       <ColNames>regnum</ColNames>
     </index>
-    <index id="126" parent="17" name="FKr1y7jij4ot47n1ljmygfyff67">
+    <index id="128" parent="18" name="FKr1y7jij4ot47n1ljmygfyff67">
       <ColNames>idNodeTo</ColNames>
     </index>
-    <key id="127" parent="17" name="PRIMARY">
+    <key id="129" parent="18" name="PRIMARY">
       <ColNames>idtransaction</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="128" parent="17" name="FKng9tdlw2hxg32tiereckj9spp">
+    <foreign-key id="130" parent="18" name="FKng9tdlw2hxg32tiereckj9spp">
       <ColNames>idAdmin</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>admins</RefTableName>
-      <RefColNames>idadmin</RefColNames>
+      <RefColNames>idAdmin</RefColNames>
     </foreign-key>
-    <foreign-key id="129" parent="17" name="FKnpmhvp16eyt6c99pds5no97nk">
+    <foreign-key id="131" parent="18" name="FKnpmhvp16eyt6c99pds5no97nk">
       <ColNames>idNodeFrom</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>node</RefTableName>
-      <RefColNames>idNode</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="130" parent="17" name="FKr1y7jij4ot47n1ljmygfyff67">
+    <foreign-key id="132" parent="18" name="FKr1y7jij4ot47n1ljmygfyff67">
       <ColNames>idNodeTo</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>node</RefTableName>
-      <RefColNames>idNode</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="131" parent="17" name="FKqo2erb77l9qoerbyhv6jj2qme">
+    <foreign-key id="133" parent="18" name="FKqo2erb77l9qoerbyhv6jj2qme">
       <ColNames>regnum</ColNames>
       <RefSchemaName>easybreezzy</RefSchemaName>
       <RefTableName>devices</RefTableName>

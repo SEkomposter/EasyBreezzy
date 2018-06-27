@@ -9,8 +9,7 @@ import java.util.Set;
 public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "idnode")
-    int idNode;
+    int id;
 
     //link: "node-nodeuser"
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,8 +36,6 @@ public class Node {
     String nodeName;
     //@Column(name = "idnodeuser")
 
-    @Column(name = "idHost",nullable = false)
-    int idHost;
     @Column(name = "Sbe")
     String Sbe;
     @Column(name = "department")
@@ -46,23 +43,6 @@ public class Node {
     @Column(name = "location")
     String location;
     //int idNodeUser;
-
-    public int getIdNode() {
-        return idNode;
-    }
-
-    public void setIdNode(int idNode) {
-        this.idNode = idNode;
-    }
-
-   // public int getIdNodeUser() {
-     //   return idNodeUser;
-    //}
-
-//    public void setIdNodeUser(int idNodeUser) {
-        //this.idNodeUser = idNodeUser;
-   // }
-
 
     public Set<Host> getHostSet() {
         return hostSet;
@@ -72,12 +52,12 @@ public class Node {
         this.hostSet = hostSet;
     }
 
-    public int getIdHost() {
-        return idHost;
+    public int getId() {
+        return id;
     }
 
-    public void setIdHost(int idHost) {
-        this.idHost = idHost;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIdSbe() {

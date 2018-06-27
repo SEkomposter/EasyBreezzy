@@ -10,7 +10,7 @@ public class Cpu {
     public Cpu(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idcpu")
+    @Column(name = "idCpu")
     int idCpu;
 
     //link:"cpu-host"
@@ -18,13 +18,13 @@ public class Cpu {
     List<Host> hostList = new LinkedList<>();
 
     String model;
-    @Column(name = "frequency", columnDefinition = "varchar default null")
+    @Column(name = "frequency")
     int frequency;
-    @Column(name = "coresNum", columnDefinition = "int default null")
+    @Column(name = "coresNum")
     int coresNum;
-    @Column(name = "cashe3lvl", columnDefinition = "int default null")
+    @Column(name = "cashe3lvl")
     int cache3lvl;
-    @Column(name = "vendor", columnDefinition = "int default null")
+    @Column(name = "vendor")
     int vendor;
 
     public int getIdCpu() {

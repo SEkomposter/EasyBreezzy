@@ -1,6 +1,7 @@
 package by.komposter.objectFactory;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table (name = "host")
@@ -8,20 +9,19 @@ public class Host implements Serializable {
     public Host(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "idhost")
-    int idHost;
-    //@Column(name = "regnum")
-    //int regnum;
+    //@Column(name = "idHost")
+    int id;
+    //link: "host-node"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idHost")
+    private Node node;
 
     //link: "host-devices"
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "regnum")
     private Devices device;
 
-    //link: "host-node"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idhost",nullable = false)
-    private Node node;
+
 
     //link: "host-cpu"
     @ManyToOne(cascade = CascadeType.ALL)
@@ -44,9 +44,8 @@ public class Host implements Serializable {
     private Hdd hdd;
 
     //link: "host-soft"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idhostsoft")
-    private Soft soft;
+    @ManyToMany(mappedBy = "hostList")
+    private List<Soft> soft;
 
     @Column(name = "hostname")
     String hostName;
@@ -67,8 +66,8 @@ public class Host implements Serializable {
     @Column(name = "pn")
     String partNumber;
 
-    public int getIdHost() {
-        return idHost;
+    public int getId() {
+        return id;
     }
 
     //public int getRegnum() {
@@ -84,8 +83,8 @@ public class Host implements Serializable {
         return hostName;
     }
 
-    public void setIdHost(int idHost) {
-        this.idHost = idHost;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setHostName(String hostName) {
