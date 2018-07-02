@@ -9,26 +9,19 @@ import java.util.Set;
 public class NodeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idnodeuser")
-    int idNodeUser;
+    @Column(name = "nodeuser_id")
+    private int id;
     @Column(name = "surname")
-    String surname;
+    private String surname;
     @Column(name = "name")
-    String name;
-    @Column(name = "otchestvo")
-    String secondName;
+    private String name;
+    @Column(name = "patronymic")
+    private String patronymic;
 
     //link: "nodeuser-node"
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "nodeUser")
-    private Set<Node> nodeSet = new LinkedHashSet<Node>();
+    private Set<Node> setNodes = new LinkedHashSet<Node>();
 
-    public int getIdNodeUser() {
-        return idNodeUser;
-    }
-
-    public void setIdNodeUser(int idNodeUser) {
-        this.idNodeUser = idNodeUser;
-    }
 
     public String getSurname() {
         return surname;
@@ -46,12 +39,28 @@ public class NodeUser {
         this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setOtchestvo(String secondName) {
-        this.secondName = secondName;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Node> getSetNodes() {
+        return setNodes;
+    }
+
+    public void setSetNodes(Set<Node> setNodes) {
+        this.setNodes = setNodes;
     }
 
 }

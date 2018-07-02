@@ -10,29 +10,45 @@ public class Cpu {
     public Cpu(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idCpu")
-    int idCpu;
+    @Column(name = "cpu_id")
+    private int id;
 
     //link:"cpu-host"
-    @OneToMany (cascade = CascadeType.ALL,mappedBy = "cpu")
-    List<Host> hostList = new LinkedList<>();
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_cpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "cpu_id"))
+    private List<Host> listHosts = new LinkedList<>();
 
-    String model;
+    private String model;
     @Column(name = "frequency")
-    int frequency;
+    private int frequency;
     @Column(name = "coresNum")
-    int coresNum;
+    private int coresNum;
     @Column(name = "cashe3lvl")
-    int cache3lvl;
+    private int cache3lvl;
     @Column(name = "vendor")
-    int vendor;
+    private int vendor;
 
-    public int getIdCpu() {
-        return idCpu;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCpu(int idCpu) {
-        this.idCpu = idCpu;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Host> getListHosts() {
+        return listHosts;
+    }
+
+    public void setListHosts(List<Host> listHosts) {
+        this.listHosts = listHosts;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     public String getModel() {
@@ -73,11 +89,4 @@ public class Cpu {
         this.vendor = vendor;
     }
 
-    public List<Host> getHostList() {
-        return hostList;
-    }
-
-    public void setHostList(List<Host> hostList) {
-        this.hostList = hostList;
-    }
 }

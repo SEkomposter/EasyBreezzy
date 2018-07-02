@@ -9,25 +9,25 @@ import java.util.Set;
 public class Admins {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idAdmin")
-    int idAdmin;
+    @Column(name = "admin_id")
+    private int idAdmin;
 
     //link "admins-transactions"
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "admin")
-    Set<Transaction> transactionSet = new LinkedHashSet<Transaction>();
+    private Set<Transaction> setTransactions = new LinkedHashSet<Transaction>();
 
     @Column(name = "surname")
-    String surname;
+    private String surname;
     @Column(name = "name")
-    String name;
-    @Column(name = "otchestvo")
-    String secondName;
+    private String name;
+    @Column(name = "patronymic")
+    private String patronymic;
     @Column(name = "isadmin")
-    int isAdmin;
+    private int isAdmin;
     @Column(name = "login")
-    String login;
+    private String login;
     @Column(name = "password")
-    String password;
+    private String password;
 
     public int getIdAdmin() {
         return idAdmin;
@@ -53,12 +53,20 @@ public class Admins {
         this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getPatronymic() {
+        return patronymic;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public Set<Transaction> getSetTransactions() {
+        return setTransactions;
+    }
+
+    public void setSetTransactions(Set<Transaction> setTransactions) {
+        this.setTransactions = setTransactions;
     }
 
     public String getLogin() {

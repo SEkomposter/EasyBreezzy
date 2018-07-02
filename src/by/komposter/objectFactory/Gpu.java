@@ -9,31 +9,24 @@ import java.util.List;
 public class Gpu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idgpu")
-    int idGpu;
+    @Column(name = "gpu_id")
+    private int id;
 
-    //link:"cpu-host"
-    @OneToMany (cascade = CascadeType.ALL,mappedBy = "gpu")
-    List<Host> hostList = new LinkedList<>();
+    //link:"gpu-host"
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_gpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "gpu_id"))
+    private List<Host> listHosts = new LinkedList<>();
 
     @Column(name = "model")
-    String model;
+    private String model;
     @Column(name = "frequency")
-    int freq;
+    private int freq;
     @Column(name = "memcapacity")
-    int memCapacity;
+    private int memCapacity;
     @Column(name = "memtype")
-    String memType;
+    private String memType;
     @Column(name = "vendor")
-    String vendor;
+    private String vendor;
 
-    public int getIdGpu() {
-        return idGpu;
-    }
-
-    public void setIdGpu(int idGpu) {
-        this.idGpu = idGpu;
-    }
 
     public String getModel() {
         return model;
@@ -73,5 +66,25 @@ public class Gpu {
 
     public void setVendor(String vendor) {
         this.vendor = vendor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Host> getListHosts() {
+        return listHosts;
+    }
+
+    public void setListHosts(List<Host> listHosts) {
+        this.listHosts = listHosts;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 }

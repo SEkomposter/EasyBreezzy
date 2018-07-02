@@ -3,6 +3,7 @@ package by.komposter.objectFactory;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "transaction")
@@ -10,81 +11,49 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idtransaction")
-    int idTransaction;
-    //@Column(name = "regnum")
-    int regnum;
+    @Column(name = "transaction_id")
+    private int id;
 
     //link: "transaction-devices"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "regnum",insertable=false, updatable=false)
+    @JoinColumn(name = "regnum")
     private Devices device;
 
     //link: "transaction-admins"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idadmin")
+    @JoinColumn(name = "admin_id")
     private Admins admin;
 
     //link: "transaction-node (nodeto)"
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idNodeTo",insertable=false, updatable=false)
-    Node nodeTo;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nodeto_id")
+    private Node nodeTo;
 
     //link: "transaction-node (nodefrom)"
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idNodeFrom",insertable=false, updatable=false)
-    Node nodeFrom;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "nodefrom_id")
+    private Node nodeFrom;
 
-    //@Column(name = "idNodeFrom")
-    int idNodeFrom;
-    //@Column(name = "idNodeto")
-    int idNodeTo;
-    //@Column(name = "idadmin")
-    int idAdmin;
     @Column(name = "reason")
-    String reason;
+    private String reason;
     @Column(name = "transactionDate")
-    String transactionDate;
-    Date date;
+    private String transactionDate;
+    private Date date;
 
-    public int getIdTransaction() {
-        return idTransaction;
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdTransaction(int idTransaction) {
-        this.idTransaction = idTransaction;
+    public Admins getAdmin() {
+        return admin;
     }
 
-    public int  getRegnum() {
-        return regnum;
-    }
-
-    public void setRegnum(int regnum) {
-        this.regnum = regnum;
-    }
-
-    public int getIdNodeFrom() {
-        return idNodeFrom;
-    }
-
-    public void setIdNodeFrom(int idNodeFrom) {
-        this.idNodeFrom = idNodeFrom;
-    }
-
-    public int getIdNodeTo() {
-        return idNodeTo;
-    }
-
-    public void setIdNodeTo(int idNodeTo) {
-        this.idNodeTo = idNodeTo;
-    }
-
-    public int getIdAdmin() {
-        return idAdmin;
-    }
-
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
+    public void setAdmin(Admins admin) {
+        this.admin = admin;
     }
 
     public String getReason() {
@@ -99,7 +68,7 @@ public class Transaction {
         return transactionDate;
     }
 
-    public void setTimestamp() {
+    public void setTransactionDate() {
         date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         this.transactionDate = sdf.format(date);
@@ -128,7 +97,11 @@ public class Transaction {
         return nodeFrom;
     }
 
-    public void setNodeFrom(Node hostFrom) {
-        this.nodeFrom = hostFrom;
+    public void setNodeFrom(Node nodeFrom) {
+        this.nodeFrom = nodeFrom;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

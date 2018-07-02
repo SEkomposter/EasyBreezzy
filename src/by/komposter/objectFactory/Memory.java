@@ -9,12 +9,12 @@ import java.util.List;
 public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idmemory")
-    int idMemory;
+    @Column(name = "memory_id")
+    int id;
 
-    //link:"cpu-host"
-    @OneToMany (cascade = CascadeType.ALL,mappedBy = "memory")
-    List<Host> hostList = new LinkedList<>();
+    //link:"memory-host"
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "memory_host", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "memory_id"))
+    private List<Host> listHosts = new LinkedList<>();
 
     @Column(name = "model")
     String model;
@@ -26,12 +26,20 @@ public class Memory {
     @Column(name = "type")
     String type;
 
-    public int getIdMemory() {
-        return idMemory;
+    public int getId() {
+        return id;
     }
 
-    public void setIdMemory(int idMemory) {
-        this.idMemory = idMemory;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Host> getListHosts() {
+        return listHosts;
+    }
+
+    public void setListHosts(List<Host> listHosts) {
+        this.listHosts = listHosts;
     }
 
     public String getModel() {

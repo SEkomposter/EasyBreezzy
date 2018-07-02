@@ -9,11 +9,12 @@ public class Host implements Serializable {
     public Host(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "idHost")
-    int id;
+    @Column(name = "host_id")
+    private int id;
+
     //link: "host-node"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idHost")
+    @JoinColumn(name = "node_id")
     private Node node;
 
     //link: "host-devices"
@@ -21,59 +22,38 @@ public class Host implements Serializable {
     @JoinColumn(name = "regnum")
     private Devices device;
 
-
-
     //link: "host-cpu"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idcpu")
-    private Cpu cpu;
+    @ManyToMany(mappedBy = "listHosts")
+    private List<Cpu> listCpu;
 
     //link: "host-memory"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idmemory")
-    private Memory memory;
+    @ManyToMany(mappedBy = "listHosts")
+    private List<Memory> listMemory;
 
     //link: "host-gpu"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idgpu")
-    private Gpu gpu;
+    @ManyToMany(mappedBy = "listHosts")
+    private List<Gpu> listGpu;
 
     //link: "host-hdd"
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn (name = "idhdd")
-    private Hdd hdd;
+    @ManyToMany(mappedBy = "listHosts")
+    private List<Hdd> listHdd;
 
     //link: "host-soft"
-    @ManyToMany(mappedBy = "hostList")
-    private List<Soft> soft;
+    @ManyToMany(mappedBy = "listHosts")
+    private List<Soft> listSoft;
 
     @Column(name = "hostname")
-    String hostName;
-    //@Column(name = "idcpu")
-
-    //@Column(name = "idmemory")
-
-    //@Column(name = "idhdd")
-
-    //@Column(name = "idgpu")
-
-   //@Column(name = "idhostsoft")
-    //int idHostSoft;
+    private String hostName;
     @Column(name = "screen")
-    int screen;
+    private int screen;
     @Column(name = "sn")
-    String serialNumber;
+    private String serialNumber;
     @Column(name = "pn")
-    String partNumber;
+    private String partNumber;
 
     public int getId() {
         return id;
     }
-
-    //public int getRegnum() {
-    //    return regnum;
-   // }
-
 
     public int getScreen() {
         return screen;
@@ -95,10 +75,6 @@ public class Host implements Serializable {
         this.node = node;
     }
 
-//public void setRegnum(int regnum) {
-     //   this.regnum = regnum;
-    //}
-
     public void setScreen(int screen) {
         this.screen = screen;
     }
@@ -110,6 +86,7 @@ public class Host implements Serializable {
     public void setDevice(Devices device) {
         this.device = device;
     }
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -125,5 +102,50 @@ public class Host implements Serializable {
     public void setPartNumber(String partNumber) {
         this.partNumber = partNumber;
     }
+
+    public List<Soft> getListSoft() {
+        return listSoft;
+    }
+
+    public void setListSoft(List<Soft> listSoft) {
+        this.listSoft = listSoft;
+    }
+
+    public List<Cpu> getListCpu() {
+        return listCpu;
+    }
+
+    public void setListCpu(List<Cpu> listCpu) {
+        this.listCpu = listCpu;
+    }
+
+    public void setListGpu(List<Gpu> listGpu) {
+        this.listGpu = listGpu;
+    }
+
+    public List<Gpu> getListGpu() {
+        return listGpu;
+    }
+
+    public List<Hdd> getListHdd() {
+        return listHdd;
+    }
+
+    public void setListHdd(List<Hdd> listHdd) {
+        this.listHdd = listHdd;
+    }
+
+    public List<Memory> getListMemory() {
+        return listMemory;
+    }
+
+    public void setListMemory(List<Memory> listMemory) {
+        this.listMemory = listMemory;
+    }
+
+    public Node getNode() {
+        return node;
+    }
+
 }
 

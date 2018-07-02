@@ -10,21 +10,21 @@ public class Hdd {
     public Hdd(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idhdd")
-    int idHdd;
+    @Column(name = "hdd_id")
+    private int id;
 
     //link:"hdd-host"
-    @OneToMany (cascade = CascadeType.ALL,mappedBy = "hdd")
-    List<Host> hostList = new LinkedList<>();
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_hdd", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "hdd_id"))
+    private List<Host> listHosts = new LinkedList<>();
 
     @Column(name = "vendor")
-    String vendor;
+    private String vendor;
     @Column(name = "model")
-    String model;
+    private String model;
     @Column(name = "capacity")
-    int capacity;
+    private int capacity;
     @Column(name = "rpm")
-    int rpm;
+    private int rpm;
 
     public String getModel() {
         return model;
@@ -34,12 +34,16 @@ public class Hdd {
         this.model = model;
     }
 
-    public int getIdHdd() {
-        return idHdd;
+    public int getId() {
+        return id;
     }
 
-    public void setIdHdd(int idHdd) {
-        this.idHdd = idHdd;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getCapacity() {
@@ -65,11 +69,12 @@ public class Hdd {
     public void setVendor(String vendor) {
         this.vendor = vendor;
     }
-    public List<Host> getHostList() {
-        return hostList;
+
+    public List<Host> getListHosts() {
+        return listHosts;
     }
 
-    public void setHostList(List<Host> hostList) {
-        this.hostList = hostList;
+    public void setListHosts(List<Host> listHosts) {
+        this.listHosts = listHosts;
     }
 }

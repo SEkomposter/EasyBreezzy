@@ -2,6 +2,7 @@ package by.komposter.objectFactory;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,48 +10,38 @@ import java.util.Set;
 public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    @Column(name = "node_id")
+    private int id;
 
     //link: "node-nodeuser"
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idnodeuser")
+    @JoinColumn(name = "nodeuser_id")
     private NodeUser nodeUser;
 
     //link: "node-devices"
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "node")
-    private Set<Devices> device = new LinkedHashSet<Devices>();
+    private Set<Devices> setDevices = new LinkedHashSet<Devices>();
 
     //link: "node-host"
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "node")
-    Set<Host> hostSet = new LinkedHashSet<Host>();
+    private Set<Host> setHosts = new LinkedHashSet<Host>();
 
     //link: "node-transaction (nodeto)"
-    @OneToOne (mappedBy = "nodeTo")
-    Transaction transactionTo;
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "nodeTo")
+    private List<Transaction> listTransactionTo;
 
     //link: "node-transaction (nodefrom)"
-    @OneToOne (mappedBy = "nodeFrom")
-    Transaction transactionFrom;
+    @OneToMany (cascade = CascadeType.ALL,mappedBy = "nodeFrom")
+    private List<Transaction> listTransactionFrom;
 
     @Column(name = "nodeName")
-    String nodeName;
-    //@Column(name = "idnodeuser")
-
+    private String nodeName;
     @Column(name = "Sbe")
-    String Sbe;
+    private String Sbe;
     @Column(name = "department")
-    String department;
+    private String department;
     @Column(name = "location")
-    String location;
-    //int idNodeUser;
-
-    public Set<Host> getHostSet() {
-        return hostSet;
-    }
-
-    public void setHostSet(Set<Host> hostSet) {
-        this.hostSet = hostSet;
-    }
+    private String location;
 
     public int getId() {
         return id;
@@ -98,5 +89,45 @@ public class Node {
 
     public void setSbe(String sbe) {
         Sbe = sbe;
+    }
+
+    public Set<Devices> getSetDevices() {
+        return setDevices;
+    }
+
+    public void setSetDevices(Set<Devices> setDevices) {
+        this.setDevices = setDevices;
+    }
+
+    public Set<Host> getSetHosts() {
+        return setHosts;
+    }
+
+    public void setSetHosts(Set<Host> setHosts) {
+        this.setHosts = setHosts;
+    }
+
+    public List<Transaction> getListTransactionFrom() {
+        return listTransactionFrom;
+    }
+
+    public void setListTransactionFrom(List<Transaction> listTransactionFrom) {
+        this.listTransactionFrom = listTransactionFrom;
+    }
+
+    public NodeUser getNodeUser() {
+        return nodeUser;
+    }
+
+    public void setNodeUser(NodeUser nodeUser) {
+        this.nodeUser = nodeUser;
+    }
+
+    public List<Transaction> getListTransactionTo() {
+        return listTransactionTo;
+    }
+
+    public void setListTransactionTo(List<Transaction> listTransactionTo) {
+        this.listTransactionTo = listTransactionTo;
     }
 }

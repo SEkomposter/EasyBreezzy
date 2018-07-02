@@ -10,46 +10,45 @@ public class Devices {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "regnum")
-    int regnum;
+    private int regnum;
 
-    //link "devices-nodes"
-    @ManyToOne
-    @JoinColumn(name = "idnode")
+    //link "devices-node"
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "node_id")
     private Node node;
 
     //link "devices-transactions"
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    Set<Transaction> transactionSet = new LinkedHashSet<Transaction>();
+    private Set<Transaction> setTransaction = new LinkedHashSet<Transaction>();
 
     //link "devices-host"
     @OneToOne(mappedBy = "device")
     private Host host;
 
     @Column(name = "invnum")
-    String invNum;
+    private String invNum;
     @Column(name = "devicetype")
-    String deviceType;
-    //@Column(name = "idnode")
-    int idNode;
-    @Column(name = "state")
-    String state;
-    @Column(name = "description")
-    String description;
-    @Column(name = "model")
-    String model;
-    @Column(name = "vendor")
-    String vendor;
-    @Column(name = "sn")
-    String serialNumber;
-    @Column(name = "pn")
-    String partNumber;
+    private String deviceType;
 
-    public int getRegnum() {
-        return regnum;
-    }
+    @Column(name = "state")
+    private String state;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "model")
+    private String model;
+    @Column(name = "vendor")
+    private String vendor;
+    @Column(name = "sn")
+    private String serialNumber;
+    @Column(name = "pn")
+    private String partNumber;
 
     public void setRegnum(int regnum) {
         this.regnum = regnum;
+    }
+
+    public int getRegnum() {
+        return regnum;
     }
 
     public String  getDeviceType() {
@@ -60,13 +59,6 @@ public class Devices {
         this.deviceType = deviceType;
     }
 
-    public int getIdNode() {
-        return idNode;
-    }
-
-    public void setIdNode(int idNode) {
-        this.idNode = idNode;
-    }
 
     public String getInvNum() {
         return invNum;
@@ -116,12 +108,12 @@ public class Devices {
         this.node = node;
     }
 
-    public Set<Transaction> getTransactionSet() {
-        return transactionSet;
+    public Set<Transaction> getSetTransaction() {
+        return setTransaction;
     }
 
-    public void setTransactionSet(Set<Transaction> transactionSet) {
-        this.transactionSet = transactionSet;
+    public void setSetTransaction(Set<Transaction> setTransaction) {
+        this.setTransaction = setTransaction;
     }
 
     public Host getHost() {

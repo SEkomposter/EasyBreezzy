@@ -10,36 +10,29 @@ import java.util.List;
 public  class Soft{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idhostsoft")
-    int idHostSoft;
+    @Column(name = "hostsoft_id")
+    private int id;
 
     //link:"soft-host"
-    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_soft", joinColumns = @JoinColumn(name = "idHostSoft"),inverseJoinColumns = @JoinColumn(name = "idhostsoft"))
-    List<Host> hostList = new LinkedList<>();
+    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_soft", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "hostsoft_id"))
+    private List<Host> listHosts = new LinkedList<>();
 
     @Column(name = "softname")
-    String softName;
+    private String softName;
     @Column(name = "version")
-    String version;
+    private String version;
     @Column(name = "revision")
-    String revision;
+    private String revision;
     @Column(name = "licdateinst")
-    String licDateInst;
+    private String licDateInst;
     @Column(name = "licterm")
-    String licTerm;
+    private String licTerm;
     @Column(name = "idadmin")
-    int idAdmin;
+    private int idAdmin;
     @Column(name = "lictype")
-    String lictype;
-    Date date;
+    private String lictype;
+    private Date date;
 
-    public int getIdHostSoft() {
-        return idHostSoft;
-    }
-
-    public void setIdHostSoft(int idHostSoft) {
-        this.idHostSoft = idHostSoft;
-    }
 
     public int getIdAdmin() {
         return idAdmin;
@@ -88,4 +81,37 @@ public  class Soft{
     public void setLicDateInst(String licDateInst) {
         this.licDateInst = licDateInst;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<Host> getListHosts() {
+        return listHosts;
+    }
+
+    public void setListHosts(List<Host> listHosts) {
+        this.listHosts = listHosts;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getLicTerm() {
+        return licTerm;
+    }
+
+    public void setLicTerm(String licTerm) {
+        this.licTerm = licTerm;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

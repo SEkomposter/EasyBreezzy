@@ -29,7 +29,7 @@ public class Main {
             SessionFactory sessionFactory = hibernateUtil.getSessionFactory();
             Session session = sessionFactory.openSession();
 
-            Host host1 = new Host();
+            /*Host host1 = new Host();
             Host host2 = new Host();
             Host host3 = new Host();
             host1.setHostName("ivanov");
@@ -43,9 +43,7 @@ public class Main {
             node2.setNodeName("Сидоров");
             node2.setDepartment("ИТ");
             node2.setSbe("АлюминТехно");
-            node1.getHostSet().add(host1);
-            node1.getHostSet().add(host2);
-            node2.getHostSet().add(host3);
+
             host2.setNode(node1);
             host1.setNode(node1);
             host3.setNode(node2);
@@ -54,7 +52,7 @@ public class Main {
             session.saveOrUpdate(host2);
             session.saveOrUpdate(node1);
             session.saveOrUpdate(host3);
-            session.saveOrUpdate(node2);
+            session.saveOrUpdate(node2);*/
             session.getTransaction().commit();
             session.close();
             sessionFactory.close();
