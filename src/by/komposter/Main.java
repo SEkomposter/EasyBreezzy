@@ -52,8 +52,8 @@ public class Main {
             session.saveOrUpdate(host2);
             session.saveOrUpdate(node1);
             session.saveOrUpdate(host3);
-            session.saveOrUpdate(node2);*/
-            session.getTransaction().commit();
+            session.saveOrUpdate(node2);
+            session.getTransaction().commit();*/
             session.close();
             sessionFactory.close();
 
