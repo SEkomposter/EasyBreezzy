@@ -12,15 +12,15 @@ public class NodeService{
     }
 
     @Override
-    public Node createItem(Node node) throws DBException {
+    public Node createItem(Node nd) throws DBException {
         Transaction transaction = DBService.getTransaction();
         try {
             NodeDaoImp dao = DaoFactory.getItemDAO();
-            Node nd = dao.create(node);
+            Node node = dao.create(nd);
 
             transaction.commit();
 
-            return nd;
+            return node;
         } catch (HibernateException | NoResultException e) {
             DBService.transactionRollback(transaction);
             throw new DBException(e);
@@ -43,7 +43,7 @@ public class NodeService{
     }
 
     @Override
-    public void deleteItem(long id) throws DBException {
+    public void deleteItem(Node nd) throws DBException {
         Transaction transaction = DBService.getTransaction();
         try {
             ItemDAO dao = DaoFactory.getItemDAO();
