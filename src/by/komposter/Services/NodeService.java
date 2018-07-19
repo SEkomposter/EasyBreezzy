@@ -1,30 +1,59 @@
 package by.komposter.Services;
 
 import by.komposter.objectFactory.Node;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
-public class NodeService extends NodeDaoIntImp{
-    public Node create(SessionFactory sFactory) {
-        Session session = sFactory.openSession();
-        session.beginTransaction();
-        Node node = new Node();
-        session.save(node);
-        session.getTransaction().commit();
-        return node;
+import org.hibernate.HibernateException;
+import org.hibernate.Transaction;
+
+import javax.persistence.NoResultException;
+
+public class NodeService{
+    NodeService() {
     }
 
-    public Node read(SessionFactory sFactory, Object node) {
-        Session session = sFactory.openSession();
-        session.beginTransaction();
-        (Node)session.get(Node.class, new Integer(((Node)node).getId()));
-        return null;
+    @Override
+    public Node createItem(Node node) throws DBException {
+        Transaction transaction = DBService.getTransaction();
+        try {
+            NodeDaoImp dao = DaoFactory.getItemDAO();
+            Node nd = dao.create(node);
+
+            transaction.commit();
+
+            return nd;
+        } catch (HibernateException | NoResultException e) {
+            DBService.transactionRollback(transaction);
+            throw new DBException(e);
+        }
     }
 
-    public Object update(SessionFactory sFactory, Object o) {
-        return null;
+    @Override
+    public void updateItem(Node node) throws DBException {
+        Transaction transaction = DBService.getTransaction();
+        try {
+            NodeDaoImp dao = DaoFactory.getItemDAO();
+            dao.update(node);
+
+            transaction.commit();
+
+        } catch (HibernateException | NoResultException e) {
+            DBService.transactionRollback(transaction);
+            throw new DBException(e);
+        }
     }
-    public boolean delete(SessionFactory sFactory, Object o) {
-        return false;
+
+    @Override
+    public void deleteItem(long id) throws DBException {
+        Transaction transaction = DBService.getTransaction();
+        try {
+            ItemDAO dao = DaoFactory.getItemDAO();
+            Item item = dao.delete(id);
+
+            transaction.commit();
+
+        } catch (HibernateException | NoResultException | IllegalArgumentException | IllegalStateException e) {
+            DBService.transactionRollback(transaction);
+            throw new DBException(e);
+        }
     }
 }

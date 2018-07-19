@@ -12,6 +12,7 @@
         <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="current_session_context_class">thread</property>
 
         <mapping class="by.komposter.objectFactory.NodeUser"/>
         <mapping class="by.komposter.objectFactory.Node"/>
