@@ -1,33 +1,36 @@
 package by.komposter.Services;
 
 import by.komposter.objectFactory.Node;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 
 public class NodeDaoImp implements DaoInt<Node>{
 
-    private Session session;
-    public NodeDaoImp(Session session){
-        this.session = session;
+    public Node create(Node nd) {
+        return (Node) DBService.getSessionFactory()
+                .getCurrentSession()
+                .save(nd);
     }
-    @Override
-    public Node create(Node node) {
-        return (Node)session.save(node);
-    }
-    @Override
     public Node getById(int id) {
-        return session.get(Node.class,id);
+        return DBService.getSessionFactory()
+                .getCurrentSession()
+                .get(Node.class, id, LockMode.PESSIMISTIC_READ);
     }
-    @Override
     public Node getByStr(String str) {
-        return session.get(Node.class,str);
+        return DBService.getSessionFactory()
+                .getCurrentSession()
+                .get(Node.class, str, LockMode.PESSIMISTIC_READ);
     }
-    @Override
-    public void update(Node node) {
-        session.update(node);
+
+    public void update(Node nd) {
+        DBService.getSessionFactory().getCurrentSession()
+                .update(nd);
     }
-    @Override
-    public Node delete(Node node) {
-        session.delete(node);
-        return node;
+
+    public Node delete(int id) {
+        Session session = DBService.getSessionFactory().getCurrentSession();
+        Node nd = session.byId(Node.class).load(id);
+        session.delete(nd);
+        return nd;
     }
 }
