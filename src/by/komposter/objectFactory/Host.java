@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table (name = "host")
-public class Host implements Serializable {
+public class Host extends Item implements Serializable {
     public Host(){}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

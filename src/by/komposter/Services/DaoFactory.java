@@ -8,7 +8,7 @@ public abstract class DaoFactory {
         if(daoInt == null) {
             synchronized(DaoFactory.class) {
                 if(daoInt == null) {
-                    daoInt = new NodeDaoImp();
+                    daoInt = new ItemDaoImp();
                 }
             }
         }

@@ -1,5 +1,6 @@
 package by.komposter.Services;
 
+import by.komposter.objectFactory.Item;
 import by.komposter.objectFactory.Node;
 
 import org.hibernate.HibernateException;
@@ -13,7 +14,7 @@ public class NodeService{
     NodeService() {
     }
 
-    public long createItem(Node item) throws Exception {
+    public long createItem(Item item) throws Exception {
         Transaction transaction = DBService.getTransaction();
         try {
             DaoInt dao = DaoFactory.getItemDAO();
@@ -29,7 +30,7 @@ public class NodeService{
     }
 
 
-    public void updateItem(Node item) throws Exception {
+    public void updateItem(Item item) throws Exception {
         Transaction transaction = DBService.getTransaction();
         try {
             DaoInt dao = DaoFactory.getItemDAO();
@@ -47,7 +48,7 @@ public class NodeService{
         Transaction transaction = DBService.getTransaction();
         try {
             DaoInt dao = DaoFactory.getItemDAO();
-            Node item = (Node)dao.delete(id);
+            Item item = (Item)dao.delete(id);
 
             transaction.commit();
 

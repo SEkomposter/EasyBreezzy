@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "node")
-public class Node {
+public class Node extends Item{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "node_id")
