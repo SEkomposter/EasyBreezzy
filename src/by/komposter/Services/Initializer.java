@@ -6,9 +6,9 @@ import by.komposter.objectFactory.Node;
 public class Initializer {
     static Node nd;
     static Host host;
-    static NodeService nodeService;
+    static ItemService itemService;
     static {
-        nodeService = new NodeService();
+        itemService = new ItemService();
         nd = new Node();
         nd.setId(0);
         nd.setNodeName("None");
@@ -20,8 +20,8 @@ public class Initializer {
     }
     public static void makeFirstInit() throws Exception{
 
-        nodeService.createItem(nd);
-        nodeService.createItem(host);
+        itemService.createItem(nd);
+        itemService.createItem(host);
 
     }
 }

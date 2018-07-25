@@ -2,7 +2,6 @@ package by.komposter.Services;
 
 import by.komposter.objectFactory.Item;
 import by.komposter.objectFactory.Node;
-
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
@@ -10,8 +9,8 @@ import org.hibernate.Transaction;
 
 import javax.persistence.NoResultException;
 
-public class NodeService{
-    NodeService() {
+public class ItemService {
+    ItemService() {
     }
 
     public long createItem(Item item) throws Exception {

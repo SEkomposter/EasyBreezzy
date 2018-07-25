@@ -5,7 +5,7 @@ import by.komposter.objectFactory.Node;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 
-public class NodeDaoImp implements DaoInt<Item>{
+public class ItemDaoImp implements DaoInt<Item>{
 
     public int create(Item item) {
 
