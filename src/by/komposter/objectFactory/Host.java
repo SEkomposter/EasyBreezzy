@@ -22,17 +22,21 @@ public class Host extends Item implements Serializable {
     @JoinColumn(name = "regnum")
     private Devices device;
 
-    //link: "host-cpu"
+    //link: "host-parts"
     @ManyToMany(mappedBy = "listHosts")
-    private List<Cpu> listCpu;
+    private List<Part> listParts;
+
+    //link: "host-cpu"
+    //@ManyToMany(mappedBy = "listHosts")
+    //private List<Cpu> listCpu;
 
     //link: "host-memory"
     @ManyToMany(mappedBy = "listHosts")
     private List<Memory> listMemory;
 
     //link: "host-gpu"
-    @ManyToMany(mappedBy = "listHosts")
-    private List<Gpu> listGpu;
+    //@ManyToMany(mappedBy = "listHosts")
+    //private List<Gpu> listGpu;
 
     //link: "host-hdd"
     @ManyToMany(mappedBy = "listHosts")
@@ -110,7 +114,7 @@ public class Host extends Item implements Serializable {
     public void setListSoft(List<Soft> listSoft) {
         this.listSoft = listSoft;
     }
-
+/*
     public List<Cpu> getListCpu() {
         return listCpu;
     }
@@ -119,6 +123,7 @@ public class Host extends Item implements Serializable {
         this.listCpu = listCpu;
     }
 
+
     public void setListGpu(List<Gpu> listGpu) {
         this.listGpu = listGpu;
     }
@@ -126,6 +131,7 @@ public class Host extends Item implements Serializable {
     public List<Gpu> getListGpu() {
         return listGpu;
     }
+    */
 
     public List<Hdd> getListHdd() {
         return listHdd;

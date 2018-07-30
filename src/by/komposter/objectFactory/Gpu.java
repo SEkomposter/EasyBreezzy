@@ -6,15 +6,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "gpu")
-public class Gpu {
+public class Gpu extends Part{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "gpu_id")
     private int id;
 
     //link:"gpu-host"
-    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_gpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "gpu_id"))
-    private List<Host> listHosts = new LinkedList<>();
+    //@ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_gpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "gpu_id"))
+   // private List<Host> listHosts = new LinkedList<>();
 
     @Column(name = "model")
     private String model;
@@ -75,7 +75,7 @@ public class Gpu {
     public void setId(int id) {
         this.id = id;
     }
-
+/*
     public List<Host> getListHosts() {
         return listHosts;
     }
@@ -83,6 +83,7 @@ public class Gpu {
     public void setListHosts(List<Host> listHosts) {
         this.listHosts = listHosts;
     }
+    */
 
     public void setModel(String model) {
         this.model = model;

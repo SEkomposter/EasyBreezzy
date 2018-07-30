@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table (name = "cpu")
-public class Cpu {
+public class Cpu extends Part{
     public Cpu(){}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +14,9 @@ public class Cpu {
     private int id;
 
     //link:"cpu-host"
-    @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_cpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "cpu_id"))
-    private List<Host> listHosts = new LinkedList<>();
-
+  //  @ManyToMany (cascade = CascadeType.ALL)@JoinTable(name = "host_cpu", joinColumns = @JoinColumn(name = "host_id"),inverseJoinColumns = @JoinColumn(name = "cpu_id"))
+   // private List<Host> listHosts = new LinkedList<>();
+    @Column(name = "model")
     private String model;
     @Column(name = "frequency")
     private int frequency;
@@ -35,13 +35,13 @@ public class Cpu {
         this.id = id;
     }
 
-    public List<Host> getListHosts() {
+    /*public List<Host> getListHosts() {
         return listHosts;
     }
 
     public void setListHosts(List<Host> listHosts) {
         this.listHosts = listHosts;
-    }
+    }*/
 
     public int getFrequency() {
         return frequency;

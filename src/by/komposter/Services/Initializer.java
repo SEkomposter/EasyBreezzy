@@ -21,7 +21,7 @@ public class Initializer {
     public static void makeFirstInit() throws Exception{
 
         itemService.createItem(nd);
-        itemService.createItem(host);
+       // itemService.createItem(host);
 
     }
 }
